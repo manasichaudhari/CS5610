@@ -1,0 +1,94 @@
+<div class="md-inline-form texture-image cover">
+    <header>
+        <md-toolbar class="header-bar">
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+            </div>
+            <div class="pull-right-name" ng-show="model.user.username">
+                <md-menu ng-show="model.user" md-offset="100 40">
+                    <span md-autofocus
+                          ng-mouseenter="$mdMenu.open()"
+                          class="margin-right">
+                        <i class="fa fa-bars"></i>
+                        {{model.user.username}}
+                    </span>
+                    <md-menu-content direction="down"
+                                     ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#!/user">
+                                <md-icon class="glyphicon glyphicon-user">
+                                </md-icon>
+                                Profile
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="model.logout()">
+                                <md-icon class="glyphicon glyphicon-log-out">
+                                </md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <div class=" col-sm-3 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <md-card class="signup-card top-margin height texture-image-opaque"
+             flex>
+        <md-card-content layout="column" layout-align="center" class="signup-card-content">
+            <md-input-container >
+                <md-icon md-svg-icon="Images/person_black.svg"></md-icon>
+                <label for="username">Username</label>
+                <input ng-model="model.user.username"
+                       id="username" type="text"
+                       disabled/>
+            </md-input-container>
+            <md-input-container >
+                <md-icon md-svg-icon="Images/person_black.svg"></md-icon>
+                <label for="username">First Name</label>
+                <input ng-model="model.user.firstName" id="firstname" type="text"/>
+
+            </md-input-container>
+
+            <md-input-container >
+                <md-icon md-svg-icon="Images/person_black.svg"></md-icon>
+                <label for="username">Last Name</label>
+                <input ng-model="model.user.lastName"
+                       id="lastname"
+                       type="text"/>
+            </md-input-container>
+
+            <md-input-container >
+                <md-icon md-svg-icon="Images/email.svg"></md-icon>
+                <label for="username">Email</label>
+                <input ng-model="model.user.email" id="email"/>
+            </md-input-container>
+            <md-input-container >
+                <md-icon md-svg-icon="Images/lock_closed.svg"></md-icon>
+                <label>Password</label>
+                <input ng-model="model.user.password" type="password" required/>
+            </md-input-container>
+
+
+            <md-card-actions>
+                <section layout="row"
+                         layout-align="center center">
+                    <div class="button-padding">
+                        <span class="btn btn-success"
+                                   ng-click="model.update(model.user)">
+                            <label class="large-text" >Update Profile</label>
+                        </span>
+                    </div>
+                </section>
+            </md-card-actions>
+        </md-card-content>
+    </md-card>
+    </div>
+    <div class=" col-sm-3 col-md-4 col-lg-4"></div>
+</div>
+

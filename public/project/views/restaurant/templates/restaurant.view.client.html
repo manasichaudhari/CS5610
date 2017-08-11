@@ -1,0 +1,62 @@
+<div class="texture-image div">
+    <header>
+        <md-toolbar class="header-bar">
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+
+            </div>
+            <div class="pull-right-name" ng-show="model.user.username">
+                <md-menu ng-show="model.user" md-offset="100 40">
+                    <span md-autofocus
+                          ng-mouseenter="$mdMenu.open()"
+                          class="margin-right">
+                        <i class="fa fa-bars"></i>
+                        {{model.user.username}}
+                    </span>
+                    <md-menu-content direction="down"
+                                     ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#!/user">
+                                <md-icon class="glyphicon glyphicon-user">
+                                </md-icon>
+                                Profile
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="model.logout()">
+                                <md-icon class="glyphicon glyphicon-log-out">
+                                </md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </header>
+    <md-card layout-padding>
+
+        <h1>Menu</h1>
+        <div ng-repeat="item in model.menu">
+            <md-checkbox class="md-primary" ng-click="model.addList(item, model.list)">
+                {{item.name}} - ${{item.price}}
+            </md-checkbox>
+
+        </div>
+
+
+        <md-card-actions>
+            <section layout="column"
+                     layout-align="center center">
+                <div class="button-padding">
+                    <span class="btn btn-primary"
+                               ng-click="model.placeOrder()">
+                       <label class="large-text " >Place order</label>
+                    </span>
+                </div>
+            </section>
+        </md-card-actions>
+    </md-card>
+</div>

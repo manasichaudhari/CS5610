@@ -1,0 +1,76 @@
+<div class="overlay">
+    <header>
+        <md-toolbar>
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+
+                <span flex></span>
+
+            <div layout="row" class=" pull-right-name" ng-show="!model.user">
+                <md-button href="#!/signup">
+                    <label>Sign Up</label>
+                </md-button>
+            </div>
+            </div>
+        </md-toolbar>
+    </header>
+<div class="container-fluid">
+    <div class="md-inline-form">
+        <div class=" col-sm-3 col-md-4 col-lg-4"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+        <md-card class="texture-image-opaque">
+            <md-card-content>
+                    <md-input-container class="md-block" flex>
+                        <md-icon md-svg-icon="Images/user-silhouette.svg"></md-icon>
+                        <label>
+                            <span class=" large-text">Username</span>
+                        </label>
+
+                        <input ng-model="user.username"
+                               class="form-control"
+                               type="text"/>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex>
+                        <md-icon md-svg-icon="Images/lock.svg"></md-icon>
+                        <label>
+                            <span class="large-text">Password</span>
+                        </label>
+                        <input ng-model="user.password" type="password"/>
+                    </md-input-container>
+
+                        <section layout="row" layout-align="center">
+                            <div layout="row">
+                                <button type="button"
+                                        ng-click="model.login(user)"
+                                        class="btn btn-primary">
+                                    Login
+                                </button>
+                                <span class="btn-margin"></span>
+
+                                <a href="/auth/google" class="btn btn-danger btn-block">
+                                    <span class="fa fa-google-plus"></span>
+                                  Google
+                                </a>
+                                <span class="btn-margin"></span>
+                                <a href="/auth/facebook"
+                                   class="btn btn-primary btn-block"
+                                   aria-label="facebook login">
+                                    <span class="fa fa-facebook"></span>
+                                    Facebook
+                                </a>
+                            </div>
+                        </section>
+            </md-card-content>
+            <div class="col-sm-3 col-md-4 col-lg-4"></div>
+
+        </md-card>
+        </div>
+    </div>
+</div>
+</div>
+
+

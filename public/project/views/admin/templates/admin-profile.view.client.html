@@ -1,0 +1,173 @@
+<div class="texture-image cover">
+    <header>
+        <md-toolbar class="header-bar">
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+            </div>
+            <div class="pull-right-name" ng-show="model.user">
+                <md-menu ng-show="model.user" md-offset="100 40">
+                    <span md-autofocus
+                          ng-mouseenter="$mdMenu.open()"
+                          class="margin-right">
+                        <i class="fa fa-bars"></i>
+                        {{model.user.username}}
+                    </span>
+                    <md-menu-content direction="down"
+                                     ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#!/user">
+                                <md-icon class="glyphicon glyphicon-user">
+                                </md-icon>
+                                Profile
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="model.logout()">
+                                <md-icon class="glyphicon glyphicon-log-out">
+                                </md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <div layout="row">
+        <h3 class="margin-left" > <b>Users and their activities</b> </h3>
+
+    </div>
+    <md-tabs md-dynamic-height>
+        <!--Users tab-->
+        <md-tab label="Users">
+            <md-card>
+                <md-content layout-padding class="texture-image">
+                    <div ng-repeat="user in model.users">
+
+                        <div class="col-sm-6 col-lg-6 .hidden-md-down">
+                            <span ng-if="user.facebook">
+                                <i><b >{{user.username}} (Facebook)</b></i>
+                            </span>
+                            <span ng-if="user.google">
+                                <i><b>{{user.username}} (Google)</b></i>
+                            </span>
+                            <span ng-if="!user.facebook && !user.google">
+                                <i><b>{{user.username}}</b></i>
+                            </span>
+                        </div>
+                        <div class="col-sm-2 col-lg-2 .hidden-md-down">
+
+                            <span>
+                                 <span ng-if="user.roles === 'ADMIN'"
+                                       class="padding-right">
+                                    Admin
+                                </span>
+                                 <span ng-if="user.roles === 'MANAGER'"
+                                       class="padding-right">
+                                    Manager
+                                </span>
+
+                                <span ng-if="user.roles === 'USER'"
+                                      class="padding-right">
+                                    User
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col-sm-4 col-lg-4 .hidden-md-down">
+
+                            <span>
+                                <span ng-if="user.roles !== 'ADMIN'"
+                                      class="md-icon-button glyphicon glyphicon-trash large-text"
+                                      ng-click="model.removeUser(user)">
+                                </span>
+                                 <a ng-if="user.roles === 'USER'"
+                                    class="btn btn-primary btn-sm margin-left"
+                                    ng-click="model.makeManager(user)">
+                                    Make Manager
+                                </a>
+
+                                <a ng-if="user.roles !== 'ADMIN'"
+                                   class="btn btn-primary btn-sm margin-left"
+                                   ng-click="model.makeAdmin(user)">
+                                    Make admin
+                                </a>
+
+                            </span>
+                        </div>
+                    </div>
+                </md-content>
+            </md-card>
+        </md-tab>
+
+        <!--Favorites tab-->
+        <md-tab label="Marked favourite">
+            <md-card>
+                <md-content layout-padding class="texture-image">
+                    <div ng-repeat="user in model.users">
+                        {{user.username}}'s Favorite Restaurant(s)
+                        <ul ng-repeat="fav in user.favourites">
+                            <li>
+                                {{fav.restaurantName}}
+                            </li>
+
+                        </ul>
+                        <ul ng-show="user.favourites.length === 0">
+                            <li>
+                                <i>None yet</i>
+                            </li>
+                        </ul>
+                    </div>
+                </md-content>
+            </md-card>
+        </md-tab>
+
+        <!--Reviews tab-->
+        <md-tab label="User Reviews">
+            <md-card>
+                <md-content layout-padding class="texture-image">
+                    <div ng-show="review.length !== 0"
+                         ng-repeat="review in model.reviews">
+                        <div ng-repeat="r in review" class="padding-mild">
+                           {{r.username}} ({{r.restaurantName}}):
+                            "{{r.review}}"
+                                <span class="md-icon-button glyphicon glyphicon-trash"
+                                           ng-click="model.removeReview(r)">
+                                </span>
+                        </div>
+                    </div>
+
+                    <span ng-show="model.anonReviews.length != 0">
+                        <h3>Anonymous Reviews:</h3>
+                    </span>
+                    <div ng-repeat="r in model.anonReviews">
+                        ({{r.restaurantName}}): "{{r.review}}"
+                        <span class="md-icon-button glyphicon glyphicon-trash"
+                              ng-click="model.removeReview(r)">
+                        </span>
+                    </div>
+                </md-content>
+            </md-card>
+        </md-tab>
+
+        <!--Orders-->
+        <md-tab label="Orders placed">
+            <md-card>
+                <md-content layout-padding class="texture-image ">
+                    <div ng-repeat="order in model.orders">
+                        Order placed by '{{order.name}}' from '{{order.restName}}':
+                        <a href="#!/restaurant/{{order.restId}}/bill/{{order._id}}">{{order._id}}</a>
+                        <span class="glyphicon glyphicon-trash"
+                              ng-click="model.removeOrder(order)">
+                        </span>
+                    </div>
+                </md-content>
+            </md-card>
+        </md-tab>
+
+
+    </md-tabs>
+
+</div>

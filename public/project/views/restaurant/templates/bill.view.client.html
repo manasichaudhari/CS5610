@@ -1,0 +1,56 @@
+<div class="texture-image cover">
+    <header>
+        <md-toolbar class="header-bar">
+            <div class="md-toolbar-tools black-bg">
+
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+
+            </div>
+            <div class="pull-right-name" ng-show="model.user.username">
+                <md-menu ng-show="model.user" md-offset="100 40">
+                    <span md-autofocus
+                          ng-mouseenter="$mdMenu.open()"
+                          class="margin-right">
+                        <i class="fa fa-bars "></i>
+                        {{model.user.username}}
+                    </span>
+                    <md-menu-content direction="down"
+                                     ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#!/user">
+                                <md-icon class="glyphicon glyphicon-user">
+                                </md-icon>
+                                Profile
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="model.logout()">
+                                <md-icon class="glyphicon glyphicon-log-out">
+                                </md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </header>
+    <md-card layout-padding>
+        <h3>Thank you for your ordering from {{model.restaurantName}} </h3>
+        <h4>Order details</h4>
+        <p>Your Order#: {{model.bill._id}}</p>
+        <ul ng-repeat="order in model.bill.order[0]"
+        class="margin-left">
+            <li>{{order.name}} - ${{order.price}}
+            </li>
+        </ul>
+        <span>
+            <strong>Total Amount: ${{model.bill.total}}
+            </strong>
+        </span>
+    </md-card>
+
+
+</div>

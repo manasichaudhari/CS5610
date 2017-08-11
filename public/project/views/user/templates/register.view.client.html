@@ -1,0 +1,89 @@
+<div class="overlay cover">
+    <header>
+        <md-toolbar>
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+
+                <span flex></span>
+
+                <div layout="row" class=" pull-right-name" ng-show="!model.user">
+                    <md-button href="#!/login">
+                        <label>Login</label>
+                    </md-button>
+                </div>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <div class="container-fluid">
+        <div class="md-inline-form">
+            <div class=" col-sm-3 col-md-4 col-lg-4"></div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+    <md-card class="texture-image-opaque">
+        <md-card-content>
+            <md-input-container class="md-block" flex>
+                <md-icon md-svg-icon="Images/person_black.svg"></md-icon>
+                <label class="large-text">Username</label>
+                <input ng-model="newuser.username"
+                       id="username"
+                       type="text"
+                       required/>
+            </md-input-container>
+            <md-input-container flex class="md-block">
+                <md-icon md-svg-icon="Images/person_black.svg"></md-icon>
+                <label class=" large-text">First name</label>
+                </label>
+                <input ng-model="newuser.firstName"
+                       id="firstname"
+                       type="text"/>
+            </md-input-container>
+            <md-input-container flex class="md-block">
+                <md-icon md-svg-icon="Images/person_black.svg"></md-icon>
+                <label class="large-text">Last Name</label>
+                <input ng-model="newuser.lastName"
+                       id="lastname"
+                       type="text"/>
+            </md-input-container>
+
+            <md-input-container flex class="md-block">
+                <md-icon md-svg-icon="Images/email.svg"></md-icon>
+                <label class="large-text">Email</label>
+                <input ng-model="newuser.email"
+                       id="email"
+                       type="email"/>
+            </md-input-container>
+            <md-input-container flex class="md-block">
+                <md-icon md-svg-icon="Images/lock_closed.svg"></md-icon>
+                <label class="large-text">Password</label>
+                <input ng-model="newuser.password"
+                       type="password"
+                       required/>
+            </md-input-container>
+            <md-input-container flex class="md-block">
+                <md-icon md-svg-icon="Images/lock_closed.svg"></md-icon>
+                <label class="large-text">Verify Password</label>
+                <input ng-model="newuser.verifyPassword" type="password" required/>
+            </md-input-container>
+
+
+            <md-card-actions>
+                <section layout="row" layout-align="center center" class="card-actions">
+                    <div class="btn btn-primary btn-lg"
+                         ng-click="model.register(newuser)">
+                        <span class="large-text">
+                        <b>Register</b>
+                            </span>
+                    </div>
+                </section>
+            </md-card-actions>
+        </md-card-content>
+        <div class="col-sm-3 col-md-4 col-lg-4"></div>
+
+    </md-card>
+</div>
+        </div>
+    </div>
+</div>

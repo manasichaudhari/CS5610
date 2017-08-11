@@ -1,0 +1,176 @@
+<div class="texture-image cover">
+<header>
+        <md-toolbar class="header-bar">
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+
+            </div>
+            <div class="pull-right-name" ng-show="model.currentUser">
+                <md-menu ng-show="model.user" md-offset="100 40">
+                    <span md-autofocus
+                               ng-mouseenter="$mdMenu.open()"
+                               href="#!/user/{{model.userId}}"
+                               class="margin-right">
+                        <i class="fa fa-bars"></i>
+                        {{model.currentUser.username}}
+                    </span>
+                    <md-menu-content direction="down"
+                                     ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#!/user">
+                                <md-icon class="glyphicon glyphicon-user">
+                                </md-icon>
+                                Profile
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="model.logout()">
+                                <md-icon class="glyphicon glyphicon-log-out">
+                                </md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <!--Profile summary-->
+    <md-card>
+            <div layout="row" layout-padding>
+                <span>
+                    <strong class="large-text">Profile Summary</strong></h2>
+                    <h5>
+                        Name: {{model.user.firstName}} {{model.user.lastName}}
+                    </h5>
+                    <h5>E-mail: {{model.user.email}} <br>
+                    </h5>
+                </span>
+            </div>
+        <md-card-actions>
+            <a ng-show="model.currentUser.username == model.user.username"
+                  class="glyphicon glyphicon-edit large-text padding-right"
+                  href="#!/user/{{model.userId}}/edit">
+            </a>
+
+            <a ng-show="model.user.roles != 'ADMIN' && model.currentUser.username == model.user.username"
+               class="glyphicon glyphicon-trash large-text"
+               ng-click="model.deleteUser()">
+            </a>
+
+            <a class="btn btn-primary btn-sm margin-left" style="margin-bottom: 8px"
+                       ng-show="model.user.roles == 'MANAGER' && model.currentUser.username == model.user.username"
+                       href="#!/manager">
+                View orders
+            </a>
+
+            <a class=" btn btn-primary btn-sm margin-bottom" style="margin-bottom: 10px"
+                    ng-show="model.user.roles == 'ADMIN' && model.currentUser.username == model.user.username"
+                       href="#!/admin">
+                      View Dashboard
+            </a>
+        </md-card-actions>
+    </md-card>
+
+    <!--Favourites-->
+    <md-card>
+        <md-card-content layout="column">
+            <div flex layout="column">
+                <md-list>
+                    <strong>Your Favourite places</strong>
+                    <ul>
+                    <li ng-repeat="favorite in model.user.favourites">
+                        <a href="#!/details/{{favorite.id}}/user/{{model.userId}}">
+                            {{favorite.restaurantName}}
+                        </a>
+                        <span ng-click="model.removeFavorite(favorite)"
+                                   ng-show="model.currentUser.username == model.user.username"
+                              class="glyphicon glyphicon-trash">
+                        </span>
+                    </li>
+                    </ul>
+                </md-list>
+            </div>
+            <md-divider></md-divider>
+
+
+            <!--Reviews-->
+            <div >
+                <strong>Your Reviews</strong><br>
+                <ul>
+                        <div layout="column" ng-repeat="review in model.reviews">
+                            <li
+                            @{{review.restaurantName}}>
+                            "{{review.review}}"
+                            <span ng-show="model.currentUser.username == model.user.username"
+                                  ng-click="model.deleteReview(review)"
+                            class="glyphicon glyphicon-trash">
+
+                                <!--<md-icon md-svg-icon="Images/round-delete-button.svg"></md-icon>-->
+
+                                <!--<i class="fa fa-times" aria-hidden="true"></i>-->
+                            </span>
+                            <br>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </md-card-content>
+    </md-card>
+
+    <!--Follow-->
+
+    <md-card ng-show="model.currentUser.username == model.user.username">
+        <md-card-content layout="row" layout-padding>
+            <div flex layout="column">
+                <strong>
+                    People whom you follow
+                </strong>
+
+                <ul>
+                    <li ng-repeat="userFollow in model.userFollows">
+                                {{userFollow.username}}
+                        <!--If the user doesn't follow anyone-->
+                        <span ng-show="model.noFollows">None</span>
+                        <span ng-show="model.alreadyFollows == true"
+                              ng-click="model.unFollowUser(userFollow)"
+                        class="glyphicon glyphicon-trash">
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <md-divider></md-divider>
+
+            <div flex layout="column">
+                <ul>
+                    <strong>People who follow you</strong>
+                    <li ng-repeat="userFollowedBy in model.userFollowedBy">
+                        {{userFollowedBy.username}}
+                        <span ng-show="model.noFollowedBy"> {{model.noFollowedBy}} None</span>
+
+                    </li>
+                </ul>
+            </div>
+
+        </md-card-content>
+    </md-card>
+
+    <md-card layout-padding ng-show="model.currentUser.username == model.user.username">
+        <strong>Your Orders</strong>
+            <ul>
+                <li ng-repeat="order in model.orders"
+                    class="margin-left">
+                    Order from {{order.restName}}:
+                    <a href="#!/restaurant/{{order.restId}}/bill/{{order._id}}">
+                        {{order._id}}
+                    </a>
+                </li>
+            </ul>
+    </md-card>
+
+</div>

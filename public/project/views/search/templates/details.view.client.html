@@ -1,0 +1,182 @@
+<div class="texture-image">
+    <header>
+        <md-toolbar class="header-bar">
+            <div class="md-toolbar-tools black-bg">
+                <a href="#!/">
+                    <img class="header-img" ng-src="Images/logo.png">
+                </a>
+            <div layout="row" class=" pull-right-name"
+                 ng-show="!model.userId">
+                <md-button href="#!/login">
+                    <label>Log In</label>
+                </md-button>
+                <md-button href="#!/signup">
+                    <label>Sign Up</label>
+                </md-button>
+            </div>
+            </div>
+
+
+            <div ng-show="model.userId" class=" pull-right-name">
+                <md-menu ng-show="model.userId" md-offset="100 40">
+                    <span md-autofocus aria-label="Open menu with custom trigger"
+                               ng-mouseenter="$mdMenu.open()"
+                               href="#!/user/{{model.userId}}"
+                               class="margin-right">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        {{model.username}}
+                    </span>
+                    <md-menu-content direction="down" width="2" ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#!/user">
+                                <md-icon class="glyphicon glyphicon-user">
+                                </md-icon>
+                                Profile
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="model.logout()">
+                                <md-icon class="glyphicon glyphicon-log-out">
+                                </md-icon>
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <div layout-padding>
+        <md-card layout-padding layout="row" layout-fill>
+            <div layout="column" layout-padding>
+                <div layout="row" layout-padding>
+                    <h3><strong>{{model.details.name}}</strong></h3>
+                    <span class="favorite-align">
+                        <md-button ng-show="model.favorite == false"
+                                   ng-click="model.addFavoriteRestaurant(model.details)"
+                                   class="md-icon-button md-accent">
+                            <md-icon md-svg-icon="Images/favorite.svg"></md-icon>
+                        </md-button>
+
+                        <md-button ng-show="model.favorite == true"
+                                   ng-click="model.deleteFavoriteRestaurant(model.details)"
+                                   class="md-icon-button md-accent">
+                            <md-icon md-svg-icon="Images/hearts.svg"></md-icon>
+                        </md-button>
+                    </span>
+                </div>
+                <span flex class="brown-colour" ng-show="model.details.description" style="font-style: italic">"{{model.details.description}}"</span>
+                <span flex class="brown-colour" ng-show="!model.details.description" style="font-style: italic">No Description Found.</span>
+                <span><i class="fa fa-building" aria-hidden="true"></i>
+                    <span class="brown-colour padding-right">
+&nbsp;                       {{model.details.location.address}},
+                        {{model.details.location.city}}
+                        {{model.details.location.state}}
+                    </span>
+                    <md-icon md-svg-icon="Images/users-group.svg"></md-icon>
+                    <span class="brown-colour">
+                        Total Check-Ins:
+                        </span>
+                    <span flex class="brown-colour padding-right"
+                          ng-show="model.details.stats.checkinsCount">
+                        {{model.details.stats.checkinsCount}}
+                    </span>
+                    <span flex class="brown-colour"
+                          ng-show="!model.details.stats.checkinsCount">
+                         Not available
+                    </span>
+
+                <span ng-show="model.details.contact.formattedPhone">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span class="brown-colour">
+                    &nbsp; {{model.details.contact.formattedPhone}}<br>
+                    </span>
+                </span>
+                    <span class=" glyphicon glyphicon-time"
+                          aria-hidden="true">
+                </span>
+
+            <span ng-repeat="time in model.details.hours.timeframes">
+                <span ng-repeat="t in time.open" class="brown-colour">
+                    {{time.days}}: {{t.renderedTime}} |
+                </span>
+
+            </span>
+                </span>
+
+                <div>
+                    <a class="md-primary padding-right"
+                       ng-show="model.details.url"
+                       href="{{model.details.url}}">
+                        Visit Website
+                    </a>
+
+                    <a class="md-primary"
+                       href="#!/restaurant/{{model.details.id}}/order"
+                       ng-show="model.canOrder == true && model.loggedInUser">
+                        Place an Order
+                    </a>
+
+                </div>
+
+
+                <span><strong>Top Reviews:</strong></span>
+                <div class="brown-colour"
+                     ng-repeat="comment in model.details.tips.groups[0].items | limitTo: 6">
+                    <i> --> {{comment.text}} </i>
+                    <md-divider></md-divider>
+                </div>
+            </div>
+        </md-card>
+
+        <md-card layout-padding>
+            <strong>Other Reviews</strong>
+            <div layout="column"
+                 ng-repeat="review in model.reviews">
+                <span ng-show="model.userId">
+                    @{{review.username}}
+                </span>
+                <span ng-show="!model.userId">@{{review.username}}</span>
+                <span class="brown-colour">
+                    <i>--> {{review.review}}</i>
+
+
+                <span ng-show="model.loggedInUser.username == review.username"
+                      ng-click="model.deleteReview(review)"
+                class="pull-right-follow padding-right">
+                    <span class="glyphicon glyphicon-trash black-text"></span>
+                    <!--<md-icon md-svg-icon="Images/round-delete-button.svg"></md-icon>-->
+
+                    <md-divider></md-divider>
+
+                </span>
+                </span>
+
+
+                <div class="pull-right-follow follow"
+                           ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && (model.Follows == false || model.alreadyFollows.indexOf(review.username)  == -1) "
+                           ng-click="model.followUser(review.username)">
+                    <button class="btn btn-primary ">Follow</button>
+                </div>
+                <span class="pull-right-follow follow"
+                           ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && model.alreadyFollows.indexOf(review.username) >= 0"
+                           ng-click="model.unFollowUser(review.username)">
+
+                    <button class=" btn btn-primary">Following</button>
+                </span>
+
+            </div>
+
+            <md-input-container>
+                <label>Write your own review</label>
+                <textarea ng-model="model.review.text"></textarea>
+            </md-input-container>
+            <button ng-click="model.addReviews(model.details.name, model.review)"
+                    class="btn btn-primary">
+                Post Review
+            </button>
+        </md-card>
+    </div>
+
+</div>
