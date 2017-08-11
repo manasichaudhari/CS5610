@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('FoodLover')
-        .controller('landingController', LandingController);
+        .controller('homeController', HomeController);
 
-    function LandingController($mdDialog, $location, UserService) {
+    function HomeController($mdDialog, $location, UserService) {
         var vm = this;
         var user = {};
         function init() {

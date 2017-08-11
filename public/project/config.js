@@ -5,8 +5,8 @@
     function Configuration($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/landing/templates/landing.view.client.html',
-                controller: 'landingController',
+                templateUrl: 'views/home/templates/home.view.client.html',
+                controller: 'homeController',
                 controllerAs: 'model'
             })
             .when('/login', {
