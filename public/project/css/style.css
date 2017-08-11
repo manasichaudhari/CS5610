@@ -33,10 +33,7 @@
 }
 
 
-.bg-cover {
-    background-image: url(../Images/1.jpg);
-    background-size: 120%;
-}
+
 
 .texture-image {
     background-image: url(../Images/texture.jpeg);
@@ -48,6 +45,10 @@
 
 }
 
+.bg-cover {
+    background-image: url(../Images/1.jpg);
+    background-size: 120%;
+}
 .overlay {
     background-image: url(../Images/1.jpg);
     background-size: cover;
@@ -244,7 +245,13 @@ md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-
 md-card {
     border-radius: 10px;
     font-family: "Helvetica" ;
-    background-color: rgba(117, 76, 23, 0);
+    /*background-color: rgba(117, 76, 23, 0);*/
+}
+
+.md-style {
+    border-radius: 10px;
+    font-family: "Helvetica" ;
+    background-color: rgba(117, 76, 23, 0.14);
 }
 
 
@@ -267,7 +274,7 @@ md-card {
     top: 20px;
 }
 
-.signup-card-content {
+.signup {
     top: -25px;
     position: relative;
     font-family: "Helvetica" ;

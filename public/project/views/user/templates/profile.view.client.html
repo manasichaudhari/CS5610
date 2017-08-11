@@ -39,7 +39,7 @@
     </header>
 
     <!--Profile summary-->
-    <md-card>
+    <md-card class="md-style">
             <div layout="row" layout-padding>
                 <span>
                     <strong class="large-text">Profile Summary</strong></h2>
@@ -76,7 +76,7 @@
     </md-card>
 
     <!--Favourites-->
-    <md-card>
+    <md-card class="md-style">
         <md-card-content layout="column">
             <div flex layout="column">
                 <md-list>
@@ -124,7 +124,8 @@
 
     <!--Follow-->
 
-    <md-card ng-show="model.currentUser.username == model.user.username">
+    <md-card ng-show="model.currentUser.username == model.user.username"
+    class="md-style">
         <md-card-content layout="row" layout-padding>
             <div flex layout="column">
                 <strong>
@@ -160,7 +161,8 @@
         </md-card-content>
     </md-card>
 
-    <md-card layout-padding ng-show="model.currentUser.username == model.user.username">
+    <md-card class="md-style"
+            layout-padding ng-show="model.currentUser.username == model.user.username">
         <strong>Your Orders</strong>
             <ul>
                 <li ng-repeat="order in model.orders"

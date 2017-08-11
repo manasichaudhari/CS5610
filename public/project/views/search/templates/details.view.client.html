@@ -48,7 +48,7 @@
     </header>
 
     <div layout-padding>
-        <md-card layout-padding layout="row" layout-fill>
+        <md-card class="md-style" layout-padding layout="row" layout-fill>
             <div layout="column" layout-padding>
                 <div layout="row" layout-padding>
                     <h3><strong>{{model.details.name}}</strong></h3>
@@ -105,7 +105,7 @@
                     </i>
                     </span>
                     <span class="brown-colour padding-right">
-                    &nbsp; {{model.details.contact.formattedPhone}}
+                   {{model.details.contact.formattedPhone}} <br>
                     </span>
                 </span>
                     <span class="medium-text">
@@ -125,16 +125,14 @@
                 <div>
                     <span class="medium-text">
                     <span class=" fa fa-globe"
-                       ng-show="model.details.url"
-                       >
-                    </span>
-                        <a class="small-text" href="{{model.details.url}}">Visit Website</a>
-                    </span>
+                       ng-show="model.details.url">
+                    </span> </span>
+                        <a class="small-text" href="{{model.details.url}}">Visit Website<br></a>
 
-                    <a class="md-primary"
+                    <a class="btn btn-primary"
                        href="#!/restaurant/{{model.details.id}}/order"
                        ng-show="model.canOrder == true && model.loggedInUser">
-                        Place an Order
+                        Order Online
                     </a>
 
                 </div>
@@ -149,7 +147,7 @@
             </div>
         </md-card>
 
-        <md-card layout-padding>
+        <md-card class="md-style" layout-padding>
             <strong>Other Reviews</strong>
             <div layout="column"
                  ng-repeat="review in model.reviews">

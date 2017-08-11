@@ -44,18 +44,20 @@
         <!--Users tab-->
         <md-tab label="Users">
             <md-card>
+
                 <md-content layout-padding class="texture-image">
+                    <md-table>
                     <div ng-repeat="user in model.users">
 
                         <div class="col-sm-6 col-lg-6 .hidden-md-down">
                             <span ng-if="user.facebook">
-                                <i><b >{{user.username}} (Facebook)</b></i>
+                                <b >{{user.username}} (Facebook)</b>
                             </span>
                             <span ng-if="user.google">
-                                <i><b>{{user.username}} (Google)</b></i>
+                                <b>{{user.username}} (Google)</b>
                             </span>
                             <span ng-if="!user.facebook && !user.google">
-                                <i><b>{{user.username}}</b></i>
+                                <b>{{user.username}}</b>
                             </span>
                         </div>
                         <div class="col-sm-2 col-lg-2 .hidden-md-down">
@@ -76,7 +78,7 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="col-sm-4 col-lg-4 .hidden-md-down">
+                        <div class="col-sm-4  col-lg-4 .hidden-md-down">
 
                             <span>
                                 <span ng-if="user.roles !== 'ADMIN'"
@@ -90,7 +92,7 @@
                                 </a>
 
                                 <a ng-if="user.roles !== 'ADMIN'"
-                                   class="btn btn-primary btn-sm margin-left"
+                                   class="btn btn-primary btn-sm margin-left margin-right"
                                    ng-click="model.makeAdmin(user)">
                                     Make admin
                                 </a>
@@ -98,6 +100,8 @@
                             </span>
                         </div>
                     </div>
+                    </md-table>
+
                 </md-content>
             </md-card>
         </md-tab>

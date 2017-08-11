@@ -52,7 +52,8 @@
         </md-toolbar>
     </header>
 
-    <md-card layout-padding ng-repeat="place in model.results">
+    <md-card class="md-style"
+            layout-padding ng-repeat="place in model.results">
         <div layout="row" layout-padding>
             <img ng-src="{{place.venue.categories[0].icon.prefix}}bg_88{{place.venue.categories[0].icon.suffix}}"
                  height="40px" width="40px">
