@@ -66,14 +66,24 @@
                         </md-button>
                     </span>
                 </div>
-                <span flex class="brown-colour" ng-show="model.details.description" style="font-style: italic">"{{model.details.description}}"</span>
-                <span flex class="brown-colour" ng-show="!model.details.description" style="font-style: italic">No Description Found.</span>
-                <span><i class="fa fa-building" aria-hidden="true"></i>
+                <span flex class="brown-colour italic"
+                      ng-show="model.details.description">
+                    "{{model.details.description}}"
+                </span>
+                <span flex class="brown-colour italic"
+                      ng-show="!model.details.description">
+                    No Description Found.
+                </span>
+                <span>
+                    <span class="medium-text">
+                    <i class="fa fa-building" aria-hidden="true"></i>
+                    </span>
                     <span class="brown-colour padding-right">
 &nbsp;                       {{model.details.location.address}},
                         {{model.details.location.city}}
                         {{model.details.location.state}}
                     </span>
+
                     <md-icon md-svg-icon="Images/users-group.svg"></md-icon>
                     <span class="brown-colour">
                         Total Check-Ins:
@@ -88,14 +98,21 @@
                     </span>
 
                 <span ng-show="model.details.contact.formattedPhone">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <span class="brown-colour">
-                    &nbsp; {{model.details.contact.formattedPhone}}<br>
+                    <span class="medium-text moveDown">
+                    <i class="fa fa-phone" aria-hidden="true">
+
+
+                    </i>
+                    </span>
+                    <span class="brown-colour padding-right">
+                    &nbsp; {{model.details.contact.formattedPhone}}
                     </span>
                 </span>
-                    <span class=" glyphicon glyphicon-time"
+                    <span class="medium-text">
+                    <span class="fa fa-clock-o"
                           aria-hidden="true">
-                </span>
+                    </span>
+                    </span>
 
             <span ng-repeat="time in model.details.hours.timeframes">
                 <span ng-repeat="t in time.open" class="brown-colour">
@@ -106,11 +123,13 @@
                 </span>
 
                 <div>
-                    <a class="md-primary padding-right"
+                    <span class="medium-text">
+                    <span class=" fa fa-globe"
                        ng-show="model.details.url"
-                       href="{{model.details.url}}">
-                        Visit Website
-                    </a>
+                       >
+                    </span>
+                        <a class="small-text" href="{{model.details.url}}">Visit Website</a>
+                    </span>
 
                     <a class="md-primary"
                        href="#!/restaurant/{{model.details.id}}/order"
@@ -124,7 +143,7 @@
                 <span><strong>Top Reviews:</strong></span>
                 <div class="brown-colour"
                      ng-repeat="comment in model.details.tips.groups[0].items | limitTo: 6">
-                    <i> --> {{comment.text}} </i>
+                    "{{comment.text}}"
                     <md-divider></md-divider>
                 </div>
             </div>
