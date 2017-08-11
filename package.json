@@ -25,5 +25,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/manasichaudhari/CS5610_Project_Foodlover.git"
+  },
+  "author": "Manasi Chaudhari",
+  "license": "ISC"
 }
