@@ -60,6 +60,7 @@ module.exports = function (app, model) {
     app.put('/api/project/admin/favorite/delete/:uid', removeFavorite);
     app.put('/api/project/admin/create/admin', makeAdmin);
     app.put('/api/project/admin/create/manager', makeManager);
+    app.put('/api/project/admin/create/user', makeUser);
 
 
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -75,6 +76,17 @@ module.exports = function (app, model) {
                 }, function (err) {
                     res.sendStatus(500);
                 })
+    }
+
+    function makeUser(req, res) {
+        var user = req.body;
+        model
+            .UserModel.makeUser(user._id)
+            .then(function (user) {
+                res.send(user)
+            }, function (err) {
+                res.sendStatus(500);
+            })
     }
 
     function makeManager(req, res) {

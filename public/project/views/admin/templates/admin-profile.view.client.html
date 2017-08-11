@@ -43,13 +43,13 @@
     <md-tabs md-dynamic-height>
         <!--Users tab-->
         <md-tab label="Users">
-            <md-card>
+            <md-card class="md-style">
 
                 <md-content layout-padding class="texture-image">
-                    <md-table>
                     <div ng-repeat="user in model.users">
+                            <div class="row">
 
-                        <div class="col-sm-6 col-lg-6 .hidden-md-down">
+                        <div class="col-xs-5 col-sm-3 col-md-4 col-lg-4">
                             <span ng-if="user.facebook">
                                 <b >{{user.username}} (Facebook)</b>
                             </span>
@@ -60,7 +60,7 @@
                                 <b>{{user.username}}</b>
                             </span>
                         </div>
-                        <div class="col-sm-2 col-lg-2 .hidden-md-down">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-3">
 
                             <span>
                                  <span ng-if="user.roles === 'ADMIN'"
@@ -78,37 +78,42 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="col-sm-4  col-lg-4 .hidden-md-down">
+                        <div class="col-xs-5 col-sm-7 col-md-6 col-lg-5">
 
                             <span>
                                 <span ng-if="user.roles !== 'ADMIN'"
-                                      class="md-icon-button glyphicon glyphicon-trash large-text"
+                                      class="md-icon-button glyphicon glyphicon-trash right-padding large-text"
                                       ng-click="model.removeUser(user)">
                                 </span>
                                  <a ng-if="user.roles === 'USER'"
-                                    class="btn btn-primary btn-sm margin-left"
+                                    class="btn btn-primary btn-sm left-margin"
                                     ng-click="model.makeManager(user)">
                                     Make Manager
                                 </a>
 
                                 <a ng-if="user.roles !== 'ADMIN'"
-                                   class="btn btn-primary btn-sm margin-left margin-right"
+                                   class="btn btn-primary btn-sm left-margin"
                                    ng-click="model.makeAdmin(user)">
-                                    Make admin
+                                    Make Admin
+                                </a>
+
+                                 <a ng-if="user.roles === 'MANAGER'"
+                                    class="btn btn-primary btn-sm left-margin"
+                                    ng-click="model.makeUser(user)">
+                                    Make User
                                 </a>
 
                             </span>
                         </div>
                     </div>
-                    </md-table>
-
+                        </div>
                 </md-content>
             </md-card>
         </md-tab>
 
         <!--Favorites tab-->
         <md-tab label="Marked favourite">
-            <md-card>
+            <md-card class="md-style">
                 <md-content layout-padding class="texture-image">
                     <div ng-repeat="user in model.users">
                         {{user.username}}'s Favorite Restaurant(s)
@@ -130,7 +135,7 @@
 
         <!--Reviews tab-->
         <md-tab label="User Reviews">
-            <md-card>
+            <md-card class="md-style">
                 <md-content layout-padding class="texture-image">
                     <div ng-show="review.length !== 0"
                          ng-repeat="review in model.reviews">
@@ -158,7 +163,7 @@
 
         <!--Orders-->
         <md-tab label="Orders placed">
-            <md-card>
+            <md-card class="md-style">
                 <md-content layout-padding class="texture-image ">
                     <div ng-repeat="order in model.orders">
                         Order placed by '{{order.name}}' from '{{order.restName}}':

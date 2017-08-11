@@ -12,7 +12,7 @@
         vm.removeFavorite = removeFavorite;
         vm.makeAdmin = makeAdmin;
         vm.makeManager= makeManager;
-        // vm.removeAdmin = removeAdmin;
+        vm.makeUser = makeUser;
 
         function init() {
             UserService
@@ -53,8 +53,17 @@
                     init();
 
                 })
-
         }
+
+        function makeUser(user) {
+            UserService
+                .makeUser(user)
+                .then(function (response) {
+                    init();
+
+                })
+        }
+
 
         function makeManager(user) {
             UserService

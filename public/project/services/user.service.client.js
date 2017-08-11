@@ -27,10 +27,16 @@
             "checkManager": checkManager,
             "removeFavorite": removeFavorite,
             "makeAdmin": makeAdmin,
-            "makeManager": makeManager
+            "makeManager": makeManager,
+            "makeUser": makeUser
         };
 
         return api;
+
+        function makeUser(user) {
+            return $http.put('/api/project/admin/create/user', user);
+
+        }
 
 
         function makeManager(user) {

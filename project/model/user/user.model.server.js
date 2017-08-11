@@ -20,7 +20,8 @@ module.exports = function () {
         "removeUser": removeUser,
         "removeFavorite": removeFavorite,
         "makeAdmin": makeAdmin,
-        "makeManager": makeManager
+        "makeManager": makeManager,
+        "makeUser": makeUser
     };
 
     var model = {};
@@ -35,6 +36,14 @@ module.exports = function () {
             .update({'_id': userId},
                 {$set: {'roles': 'MANAGER'}} );
     }
+
+    function makeUser(userId) {
+        return UserModel
+            .update({'_id': userId},
+                {$set: {'roles': 'USER'}} );
+    }
+
+
 
     function makeAdmin(userId) {
         return UserModel

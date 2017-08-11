@@ -36,16 +36,15 @@
         </md-toolbar>
     </header>
 
-    <md-card>
+    <md-card class="md-style">
         <md-content layout-padding class="texture-image">
             <div ng-repeat="order in model.orders">
-                Order by {{order.name}} from {{order.restName}}: <a
+                Order by '{{order.name}}' from {{order.restName}}: <a
                     href="#!/restaurant/{{order.restId}}/bill/{{order._id}}">{{order._id}}</a>
                 <span>
-                    <md-button class="md-icon-button " ng-click="model.removeOrder(order)" aria-label="edit profile">
-                        <md-icon md-svg-icon="Images/delete_black.svg">
-                        </md-icon>
-                    </md-button>
+                    <span class="md-icon-button glyphicon glyphicon-trash "
+                          ng-click="model.removeOrder(order)">
+                    </span>
                 </span>
             </div>
         </md-content>
