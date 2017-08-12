@@ -1,6 +1,7 @@
 (function () {
 
-    angular.module('FoodLover')
+    angular.
+    module('FoodLover')
         .directive('ngAutocomplete', function ($parse) {
             return {
 

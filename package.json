@@ -4,6 +4,7 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
+    "ajl-ion-google-place": "^1.0.8",
     "angular-route": "^1.6.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
