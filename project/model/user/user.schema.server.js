@@ -19,7 +19,7 @@ module.exports = function () {
         favourites: [{'id': String, 'restaurantName': String}],
         follows: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'}],
         followedBy: [{type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'}],
-        roles: {type: String, enum: ['USER', 'ADMIN', 'MANAGER'], default: 'ADMIN'}
+        roles: {type: String, enum: ['USER', 'ADMIN', 'MANAGER'], default: 'USER'}
     }, {collection: "project_user"});
     return UserSchema;
 }
