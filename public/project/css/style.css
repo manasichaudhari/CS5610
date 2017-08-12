@@ -310,7 +310,7 @@ md-card {
     position: relative;
 }
 
-.pac-container {
-z-index: 10000 !important;
-    display: block !important;
-}
+/*.pac-container {*/
+/*z-index: 10000 !important;*/
+    /*display: block !important;*/
+/*}*/
