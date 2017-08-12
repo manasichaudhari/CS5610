@@ -2,12 +2,14 @@
     angular.module('FoodLover')
         .controller('SearchResultsController', SearchResultsController);
 
-    function SearchResultsController(FoursquareSearchService, UserService, $routeParams, $location) {
+    function SearchResultsController(FoursquareSearchService, UserService, $routeParams, $location, loggedIn) {
         var vm = this;
         vm.id = $routeParams['id'];
         vm.name = $routeParams['name'];
         vm.city = $routeParams['city'];
-        vm.userId = $routeParams['uid'];
+        if (loggedIn) {
+            vm.userId = loggedIn._id;
+        }
 
         vm.getRestaurantDetails = getRestaurantDetails;
         vm.logout = logout;
@@ -31,12 +33,6 @@
                 }, function (err) {
                     console.log(err);
                 });
-
-            // FoursquareSearchService
-            //     .findImage(id)
-            //     .then(function (response) {
-            //         console.log(response.data)
-            //     })
 
         }
 

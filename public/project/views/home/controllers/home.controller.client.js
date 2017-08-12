@@ -38,7 +38,7 @@
                 city = city.split(',')[0];
             }
                 if (vm.userId) {
-                    $location.url('/searchResults/' + place + '/location/' + city + "/user/" + vm.userId);
+                    $location.url('/searchResults/' + place + '/location/' + city + "/user/");
                 } else {
                     $location.url('/searchResults/' + place + '/location/' + city);
                 }
@@ -53,7 +53,7 @@
             }
 
             if (vm.userId) {
-                $location.url('/searchResults/' + place + '/location/' + city + "/user/" + vm.userId);
+                $location.url('/searchResults/' + place + '/location/' + city + "/user/");
             } else {
                 $location.url('/searchResults/' + place + '/location/' + city);
             }
@@ -67,7 +67,7 @@
             }
 
             if (vm.userId) {
-                $location.url('/searchResults/' + place + '/location/' + city + "/user/" + vm.userId);
+                $location.url('/searchResults/' + place + '/location/' + city + "/user/");
             } else {
                 $location.url('/searchResults/' + place + '/location/' + city);
             }
@@ -81,7 +81,7 @@
             }
 
             if (vm.userId) {
-                $location.url('/searchResults/' + place + '/location/' + city + "/user/" + vm.userId);
+                $location.url('/searchResults/' + place + '/location/' + city + "/user/");
             } else {
                 $location.url('/searchResults/' + place + '/location/' + city);
             }
@@ -95,7 +95,7 @@
             }
 
             if (vm.userId) {
-                $location.url('/searchResults/' + place + '/location/' + city + "/user/" + vm.userId);
+                $location.url('/searchResults/' + place + '/location/' + city + "/user/");
             } else {
                 $location.url('/searchResults/' + place + '/location/' + city);
             }

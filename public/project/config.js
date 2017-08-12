@@ -17,9 +17,12 @@
             .when('/searchResults/:name/location/:city/', {
                 templateUrl: 'views/search/templates/search-results.view.client.html',
                 controller: 'SearchResultsController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
-            .when('/searchResults/:name/location/:city/user/:uid', {
+            .when('/searchResults/:name/location/:city/user/', {
                 templateUrl: 'views/search/templates/search-results.view.client.html',
                 controller: 'SearchResultsController',
                 controllerAs: 'model',
@@ -106,14 +109,14 @@
 
     }
 
-    function checkLoggedIn(UserService, $q, $location, $http) {
+    function checkLoggedIn(UserService, $q, $location) {
         var deferred = $q.defer();
         UserService
             .loggedIn()
             .then(function (user) {
                 if(user === '0') {
-                    deferred.reject();
-                    $location.url('/login');
+                    deferred.resolve(null);
+                    // $location.url('/login');
                 } else {
                     deferred.resolve(user);
                 }
@@ -122,7 +125,11 @@
         return deferred.promise;
     }
 
-    function checkAdmin(UserService, $q, $location, $http) {
+    function noCheckLoggedIn() {
+
+    }
+
+    function checkAdmin(UserService, $q, $location) {
         var deferred = $q.defer();
         UserService.checkAdmin()
             .then(function (response) {
@@ -137,7 +144,7 @@
         return deferred.promise;
     }
 
-    function checkManager(UserService, $q, $location, $http) {
+    function checkManager(UserService, $q, $location) {
         var deferred = $q.defer();
         UserService.checkManager()
             .then(function (response) {
