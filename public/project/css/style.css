@@ -313,3 +313,7 @@ md-card {
 .pac-container {
 z-index: 10000 !important;
 }
+
+.pac-item span {
+    pointer-events: none;
+}
