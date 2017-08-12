@@ -136,7 +136,7 @@
                         })
                 });
             //display follow status correctly
-            setTimeout(init, 100);
+            setTimeout(init, 200);
         }
 
         function followUser(username) {
@@ -157,7 +157,7 @@
                         })
                 });
 
-            setTimeout(init, 100);
+            setTimeout(init, 200);
 
         }
 
@@ -205,7 +205,7 @@
         }
 
 
-        function addReviews(name, review,text) {
+        function addReviews(name, review, text) {
 
             vm.review = "";
             if (vm.userId) {

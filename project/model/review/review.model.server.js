@@ -13,7 +13,7 @@ module.exports = function () {
         "findAllReviews": findAllReviews,
         "removeReview": removeReview,
         "removeReviewByUser": removeReviewByUser,
-        "deleteReview": deleteReview
+        "deleteReview": deleteReview,
     }
 
     return api;

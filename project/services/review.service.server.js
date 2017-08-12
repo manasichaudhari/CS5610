@@ -7,6 +7,7 @@ module.exports = function (app, model) {
     app.put('/api/project/admin/review', removeReview);
     app.delete('/api/project/user/review/delete/:reviewId', deleteReview);
 
+
     function deleteReview(req, res) {
         var review = req.params['reviewId'];
 
@@ -17,6 +18,7 @@ module.exports = function (app, model) {
                 res.sendStatus(500);
             })
     }
+
 
     function removeReview(req, res) {
         var review = req.body;

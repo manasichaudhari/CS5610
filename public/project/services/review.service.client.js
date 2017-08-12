@@ -9,7 +9,7 @@
             'findAllReviewsByUser': findAllReviewsByUser,
             "findAllReviews": findAllReviews,
             "removeReview": removeReview,
-            "deleteReview": deleteReview
+            "deleteReview": deleteReview,
         };
 
         return api;
@@ -17,6 +17,7 @@
         function deleteReview(review) {
             return $http.delete('/api/project/user/review/delete/' + review._id);
         }
+
 
         function removeReview(review) {
             return $http.put('/api/project/admin/review', review);
