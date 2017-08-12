@@ -42,7 +42,7 @@
         <h4>Order details</h4>
         <p>Your Order#: {{model.bill._id}}</p>
         <ul ng-repeat="order in model.bill.order[0]"
-        class="margin-left">
+            class="margin-left">
             <li>{{order.name}} - ${{order.price}}
             </li>
         </ul>

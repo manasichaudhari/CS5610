@@ -77,14 +77,6 @@
                     loggedIn: checkLoggedIn
                 }
             })
-            // .when('/user/:uid', {
-            //     templateUrl: 'views/user/templates/profile.view.client.html',
-            //     controller: 'profileController',
-            //     controllerAs: 'model',
-            //     resolve: {
-            //         loggedIn: checkLoggedIn
-            //     }
-            // })
             .when('/user/edit', {
                 templateUrl: 'views/user/templates/profile-edit.view.client.html',
                 controller: 'profileEditController',
@@ -117,7 +109,7 @@
         UserService
             .loggedIn()
             .then(function (user) {
-                if(user === '0') {
+                if (user === '0') {
                     deferred.resolve(null);
                     // $location.url('/login');
                 } else {

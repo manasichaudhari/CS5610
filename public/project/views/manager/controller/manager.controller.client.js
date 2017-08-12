@@ -2,9 +2,9 @@
     angular.module('FoodLover')
         .controller('managerController', managerController);
 
-    function managerController(UserService, $location, ReviewService, RestaurantService, $mdDialog,managerUser) {
+    function managerController(UserService, $location, ReviewService, RestaurantService, $mdDialog, managerUser) {
         var vm = this;
-        vm.user=managerUser;
+        vm.user = managerUser;
         vm.logout = logout;
         vm.removeOrder = removeOrder;
 

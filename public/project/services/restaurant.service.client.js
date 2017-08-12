@@ -29,7 +29,7 @@
             return $http.get('/api/project/restaurant/order/bill/' + billId);
         }
 
-        function placeOrder(order,list) {
+        function placeOrder(order, list) {
             var Order = {
                 'restName': order.restName,
                 'name': order.name,

@@ -6,17 +6,13 @@
         var vm = this;
 
         vm.id = $routeParams['id'];
-        if(loggedIn) {
+        if (loggedIn) {
             vm.userId = loggedIn._id;
         }
-
-
-
 
         var user = {};
 
         vm.addReviews = addReviews;
-        vm.viewProfile = viewProfile;
         vm.addFavoriteRestaurant = addFavoriteRestaurant;
         vm.deleteFavoriteRestaurant = deleteFavoriteRestaurant;
         vm.followUser = followUser;
@@ -68,24 +64,6 @@
                     var address = vm.details.name;
 
                     restName = vm.details.name;
-                    //
-                    // var latitude = vm.details.location.lat;
-                    // var longitude = vm.details.location.lng;
-                    //
-                    //
-                    // var myLatLng = {lat: latitude, lng: longitude};
-                    //
-                    // var map = new google.maps.Map(document.getElementById('map'), {
-                    //     center: myLatLng,
-                    //     zoom: 12
-                    // });
-                    //
-                    // var marker = new google.maps.Marker({
-                    //     map: map,
-                    //     position: myLatLng,
-                    //     title: address
-                    // });
-
 
                     ReviewService.findReviewsForRestaurant(vm.details.name)
                         .then(function (response) {
@@ -157,7 +135,7 @@
                             }
                         })
                 });
-           //display follow status correctly
+            //display follow status correctly
             setTimeout(init, 100);
         }
 
@@ -223,15 +201,6 @@
                 }, function (err) {
                     console.log(err);
 
-                })
-        }
-
-
-        function viewProfile(username) {
-            UserService.findUserByUsername(username)
-                .then(function (response) {
-                    user = response.data;
-                    $location.url('/user/' + user._id);
                 })
         }
 

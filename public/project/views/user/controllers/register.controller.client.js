@@ -47,7 +47,7 @@
                                 .registerUser(user)
                                 .then(function (response) {
                                     var user = response.data;
-                                    $location.url('/user/' + user._id);
+                                    $location.url('/user/');
                                 });
                         } else {
                             $mdDialog.show(

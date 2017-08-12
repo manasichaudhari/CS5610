@@ -34,30 +34,33 @@ module.exports = function () {
     function makeManager(userId) {
         return UserModel
             .update({'_id': userId},
-                {$set: {'roles': 'MANAGER'}} );
+                {$set: {'roles': 'MANAGER'}});
     }
 
     function makeUser(userId) {
         return UserModel
             .update({'_id': userId},
-                {$set: {'roles': 'USER'}} );
+                {$set: {'roles': 'USER'}});
     }
-
 
 
     function makeAdmin(userId) {
         return UserModel
             .update({'_id': userId},
-                {$set: {'roles': 'ADMIN'}} );
+                {$set: {'roles': 'ADMIN'}});
     }
 
     function updateUser(userId, user) {
         return UserModel
             .update({'_id': userId},
-                {$set: {'firstName': user.firstName,
-                    'lastName': user.lastName,
-                    'email': user.email,
-                    'password': user.password}});
+                {
+                    $set: {
+                        'firstName': user.firstName,
+                        'lastName': user.lastName,
+                        'email': user.email,
+                        'password': user.password
+                    }
+                });
     }
 
     function removeFavorite(userId, fav) {

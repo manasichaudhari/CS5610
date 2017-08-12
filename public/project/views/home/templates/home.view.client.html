@@ -20,9 +20,9 @@
                 <div ng-show="model.user" class="pull-right-name">
                     <md-menu ng-show="model.user" md-offset="100 40">
                         <span md-autofocus aria-label="Open menu with custom trigger"
-                                   ng-mouseenter="$mdMenu.open()"
-                                   href="#!/user/{{model.userId}}"
-                                   class="margin-right">
+                              ng-mouseenter="$mdMenu.open()"
+                              href="#!/user/{{model.userId}}"
+                              class="margin-right">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                             {{model.user.username}}
                         </span>
@@ -63,25 +63,25 @@
                     <label class="white-text x-large-text">Search</label>
                     <input class="white-text form-control"
                            ng-model="search.place"
-                          type="text"
-                          placeholder="Cakes, Tacos, Pizza">
+                           type="text"
+                           placeholder="Cakes, Tacos, Pizza">
                     </input>
                 </md-input-container>
                     </span>
 
-                <md-input-container class="md-block">
-                    <label class="white-text x-large-text">City</label>
-                    <input class="white-text form-control"
-                           type="text"
-                           placeholder="Seattle"
-                           ng-init="search.city='Seattle'"
-                           ng-model="search.city"
-                           ng-autocomplete="search.city">
-                </md-input-container>
-                    </span>
+                        <md-input-container class="md-block">
+                            <label class="white-text x-large-text">City</label>
+                            <input class="white-text form-control"
+                                   type="text"
+                                   placeholder="Seattle"
+                                   ng-init="search.city='Seattle'"
+                                   ng-model="search.city"
+                                   ng-autocomplete="search.city">
+                        </md-input-container>
+                        </span>
                         <md-button ng-click="model.searchPlace(search.place,search.city)"
                                    class="md-icon-button md-primary "
-                                  aria-label="search">
+                                   aria-label="search">
                             <span class="glyphicon glyphicon-search top-margin white-text"
                                   aria-hidden="true">
                             </span>
@@ -90,7 +90,7 @@
 
                     <div layout="row">
 
-                        <div ng-click="model.getPizza()" class="pizza-pos" >
+                        <div ng-click="model.getPizza()" class="pizza-pos">
                             <img ng-src="Images/pizza.svg" width="40px" height="40px">
                         </div>
 

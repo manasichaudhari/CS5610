@@ -37,7 +37,7 @@
     </header>
 
     <div layout="row">
-        <h3 class="margin-left" > <b>Users and their activities</b> </h3>
+        <h3 class="margin-left"><b>Users and their activities</b></h3>
 
     </div>
     <md-tabs md-dynamic-height>
@@ -47,20 +47,20 @@
 
                 <md-content layout-padding class="texture-image">
                     <div ng-repeat="user in model.users">
-                            <div class="row">
+                        <div class="row">
 
-                        <div class="col-xs-5 col-sm-3 col-md-4 col-lg-4">
+                            <div class="col-xs-5 col-sm-3 col-md-4 col-lg-4">
                             <span ng-if="user.facebook">
-                                <b >{{user.username}} (Facebook)</b>
+                                <b>{{user.username}} (Facebook)</b>
                             </span>
-                            <span ng-if="user.google">
+                                <span ng-if="user.google">
                                 <b>{{user.username}} (Google)</b>
                             </span>
-                            <span ng-if="!user.facebook && !user.google">
+                                <span ng-if="!user.facebook && !user.google">
                                 <b>{{user.username}}</b>
                             </span>
-                        </div>
-                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-3">
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-3">
 
                             <span>
                                  <span ng-if="user.roles === 'ADMIN'"
@@ -77,8 +77,8 @@
                                     User
                                 </span>
                             </span>
-                        </div>
-                        <div class="col-xs-5 col-sm-7 col-md-6 col-lg-5">
+                            </div>
+                            <div class="col-xs-5 col-sm-7 col-md-6 col-lg-5">
 
                             <span>
                                 <span ng-if="user.roles !== 'ADMIN'"
@@ -104,9 +104,9 @@
                                 </a>
 
                             </span>
+                            </div>
                         </div>
                     </div>
-                        </div>
                 </md-content>
             </md-card>
         </md-tab>
@@ -140,10 +140,10 @@
                     <div ng-show="review.length !== 0"
                          ng-repeat="review in model.reviews">
                         <div ng-repeat="r in review" class="padding-mild">
-                           {{r.username}} ({{r.restaurantName}}):
+                            {{r.username}} ({{r.restaurantName}}):
                             "{{r.review}}"
-                                <span class="md-icon-button glyphicon glyphicon-trash"
-                                           ng-click="model.removeReview(r)">
+                            <span class="md-icon-button glyphicon glyphicon-trash"
+                                  ng-click="model.removeReview(r)">
                                 </span>
                         </div>
                     </div>

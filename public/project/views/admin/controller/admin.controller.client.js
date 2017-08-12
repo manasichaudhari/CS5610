@@ -2,16 +2,16 @@
     angular.module('FoodLover')
         .controller('adminController', adminController);
 
-    function adminController(UserService, $location, ReviewService, RestaurantService, $mdDialog,adminUser) {
+    function adminController(UserService, $location, ReviewService, RestaurantService, $mdDialog, adminUser) {
         var vm = this;
-        vm.user=adminUser;
+        vm.user = adminUser;
         vm.removeUser = removeUser;
         vm.logout = logout;
         vm.removeReview = removeReview;
         vm.removeOrder = removeOrder;
         vm.removeFavorite = removeFavorite;
         vm.makeAdmin = makeAdmin;
-        vm.makeManager= makeManager;
+        vm.makeManager = makeManager;
         vm.makeUser = makeUser;
 
         function init() {

@@ -5,24 +5,23 @@
                 <a href="#!/">
                     <img class="header-img" ng-src="Images/logo.png">
                 </a>
-            <div layout="row" class=" pull-right-name"
-                 ng-show="!model.userId">
-                <md-button href="#!/login">
-                    <label>Log In</label>
-                </md-button>
-                <md-button href="#!/signup">
-                    <label>Sign Up</label>
-                </md-button>
-            </div>
+                <div layout="row" class=" pull-right-name"
+                     ng-show="!model.userId">
+                    <md-button href="#!/login">
+                        <label>Log In</label>
+                    </md-button>
+                    <md-button href="#!/signup">
+                        <label>Sign Up</label>
+                    </md-button>
+                </div>
             </div>
 
 
             <div ng-show="model.userId" class=" pull-right-name">
                 <md-menu ng-show="model.userId" md-offset="100 40">
                     <span md-autofocus aria-label="Open menu with custom trigger"
-                               ng-mouseenter="$mdMenu.open()"
-                               href="#!/user/{{model.userId}}"
-                               class="margin-right">
+                          ng-mouseenter="$mdMenu.open()"
+                          class="margin-right">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                         {{model.username}}
                     </span>
@@ -125,9 +124,9 @@
                 <div>
                     <span class="medium-text">
                     <span class=" fa fa-globe"
-                       ng-show="model.details.url">
+                          ng-show="model.details.url">
                     </span> </span>
-                        <a class="small-text" href="{{model.details.url}}">Visit Website<br></a>
+                    <a class="small-text" href="{{model.details.url}}">Visit Website<br></a>
 
                     <a class="btn btn-primary"
                        href="#!/restaurant/{{model.details.id}}/order"
@@ -161,7 +160,7 @@
 
                 <span ng-show="model.loggedInUser.username == review.username"
                       ng-click="model.deleteReview(review)"
-                class="pull-right-follow padding-right">
+                      class="pull-right-follow padding-right">
                     <span class="glyphicon glyphicon-trash black-text"></span>
                     <!--<md-icon md-svg-icon="Images/round-delete-button.svg"></md-icon>-->
 
@@ -172,13 +171,13 @@
 
 
                 <div class="pull-right-follow follow"
-                           ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && (model.Follows == false || model.alreadyFollows.indexOf(review.username)  == -1) "
-                           ng-click="model.followUser(review.username)">
+                     ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && (model.Follows == false || model.alreadyFollows.indexOf(review.username)  == -1) "
+                     ng-click="model.followUser(review.username)">
                     <button class="btn btn-primary ">Follow</button>
                 </div>
                 <span class="pull-right-follow follow"
-                           ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && model.alreadyFollows.indexOf(review.username) >= 0"
-                           ng-click="model.unFollowUser(review.username)">
+                      ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && model.alreadyFollows.indexOf(review.username) >= 0"
+                      ng-click="model.unFollowUser(review.username)">
 
                     <button class=" btn btn-primary">Following</button>
                 </span>

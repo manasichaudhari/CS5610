@@ -2,7 +2,7 @@
     angular.module('FoodLover')
         .controller('SearchResultsController', SearchResultsController);
 
-    function SearchResultsController(FoursquareSearchService, UserService, $routeParams, $location, loggedIn) {
+    function SearchResultsController(FoursquareSearchService, UserService, $routeParams, $location, loggedIn, $mdDialog) {
         var vm = this;
         vm.id = $routeParams['id'];
         vm.name = $routeParams['name'];
@@ -30,6 +30,15 @@
                 .then(function (response) {
                     console.log(response.data);
                     vm.results = response.data.response.groups[0].items;
+                    if (typeof vm.results === 'undefined' || vm.results.length === 0) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title("Sorry")
+                                .textContent("No results found! Please increase the scope of your search")
+                                .ok("OK"));
+                        // vm.results=null;
+                    }
                 }, function (err) {
                     console.log(err);
                 });
@@ -52,7 +61,6 @@
                 $location.url('/details/' + id);
             }
         }
-
 
 
     }

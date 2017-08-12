@@ -2,9 +2,9 @@
     angular.module('FoodLover')
         .controller('resturantController', resturantController);
 
-    function resturantController($routeParams, FoursquareSearchService, UserService, RestaurantService, $location, $mdDialog,loggedIn) {
+    function resturantController($routeParams, FoursquareSearchService, UserService, RestaurantService, $location, $mdDialog, loggedIn) {
         var vm = this;
-        vm.user=loggedIn;
+        vm.user = loggedIn;
         vm.restId = $routeParams['id'];
         vm.billId = $routeParams['billId'];
         vm.logout = logout;
@@ -38,16 +38,16 @@
                                 .title("Menu error!")
                                 .textContent("Menu not available")
                                 .ok("OK"));
-                        $location.url('/details/' + vm.restId + '/user/' + user._id);
+                        $location.url('/details/' + vm.restId + '/user/');
                     } else {
-                        var menu=response.data.response.menu.menus.items[0].entries.items[0].entries.items;
+                        var menu = response.data.response.menu.menus.items[0].entries.items[0].entries.items;
                         console.log(response.data.response.menu.menus.items[0].entries.items[0].entries.items);
-                        for(var i =1;i < response.data.response.menu.menus.items[0].entries.count; i++) {
+                        for (var i = 1; i < response.data.response.menu.menus.items[0].entries.count; i++) {
                             menu = (menu).concat(response.data.response.menu.menus.items[0].entries.items[i].entries.items)
                             ;
                         }
-                        vm.menu=menu;
-                    console.log(vm.menu);
+                        vm.menu = menu;
+                        console.log(vm.menu);
                     }
                 });
 
@@ -74,6 +74,7 @@
             }
 
         }
+
         function logout() {
             UserService.logout()
                 .then(function (response) {
@@ -83,9 +84,9 @@
 
 
         function placeOrder() {
-            var order={};
-            order.name=vm.user.username;
-            order.restName= restName;
+            var order = {};
+            order.name = vm.user.username;
+            order.restName = restName;
             order.restId = vm.restId;
             order.userId = user._id;
             if (vm.list.length == 0) {
@@ -95,15 +96,15 @@
                         .title("Empty order!")
                         .textContent("Please select items")
                         .ok("OK"));
-            } else if (vm.menu[0].price !== null && typeof vm.menu[0].price !== 'undefined' ) {
-                    console.log(vm.menu[0].price);
-                    RestaurantService
-                        .placeOrder(order, vm.list)
-                        .then(function (response) {
-                            if (response) {
-                                $location.url('/restaurant/' + vm.restId + '/bill/' + response.data._id);
-                            }
-                        });
+            } else if (vm.menu[0].price !== null && typeof vm.menu[0].price !== 'undefined') {
+                console.log(vm.menu[0].price);
+                RestaurantService
+                    .placeOrder(order, vm.list)
+                    .then(function (response) {
+                        if (response) {
+                            $location.url('/restaurant/' + vm.restId + '/bill/' + response.data._id);
+                        }
+                    });
 
             }
             else {

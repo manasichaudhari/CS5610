@@ -21,9 +21,9 @@ module.exports = function (app, model) {
     };
 
     var googleConfig = {
-        clientID     : process.env.GOOGLE_CLIENT_ID,
-        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL
     };
 
     app.post('/api/project/register', createUser);
@@ -44,10 +44,10 @@ module.exports = function (app, model) {
     app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-        successRedirect: '/project/#!/user',
+            successRedirect: '/project/#!/user',
             failureRedirect: '/project/#!/login'
-    }));
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+        }));
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
     app.get('/auth/google/callback',
         passport.authenticate('google', {
             successRedirect: '/project/#!/user',
@@ -69,13 +69,13 @@ module.exports = function (app, model) {
 
     function makeAdmin(req, res) {
         var user = req.body;
-            model
-                .UserModel.makeAdmin(user._id)
-                .then(function (user) {
-                    res.send(user)
-                }, function (err) {
-                    res.sendStatus(500);
-                })
+        model
+            .UserModel.makeAdmin(user._id)
+            .then(function (user) {
+                res.send(user)
+            }, function (err) {
+                res.sendStatus(500);
+            })
     }
 
     function makeUser(req, res) {
@@ -232,35 +232,39 @@ module.exports = function (app, model) {
         model.UserModel
             .findUserByGoogleId(profile.id)
             .then(
-                function(user) {
-                    if(user) {
+                function (user) {
+                    if (user) {
                         return done(null, user);
                     } else {
                         var email = profile.emails[0].value;
                         var emailParts = email.split("@");
                         var newGoogleUser = {
-                            username:  emailParts[0],
+                            username: emailParts[0],
                             firstName: profile.name.givenName,
-                            lastName:  profile.name.familyName,
-                            email:     email,
+                            lastName: profile.name.familyName,
+                            email: email,
                             google: {
-                                id:    profile.id,
+                                id: profile.id,
                                 token: token
                             }
                         };
                         return model.UserModel.createUser(newGoogleUser);
                     }
                 },
-                function(err) {
-                    if (err) { return done(err); }
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
                 }
             )
             .then(
-                function(user){
+                function (user) {
                     return done(null, user);
                 },
-                function(err){
-                    if (err) { return done(err); }
+                function (err) {
+                    if (err) {
+                        return done(err);
+                    }
                 }
             );
     }
@@ -270,7 +274,7 @@ module.exports = function (app, model) {
         model.UserModel.findUserByUsername(username)
             .then(function (user) {
 
-                if(user && bcrypt.compareSync(password, user.password)) {
+                if (user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {
                     return done(null, false);

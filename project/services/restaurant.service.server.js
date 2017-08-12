@@ -69,7 +69,7 @@ module.exports = function (app, model) {
                     res.sendStatus(500);
                 }
 
-            },function (err) {
+            }, function (err) {
                 console.log(err);
             });
     }

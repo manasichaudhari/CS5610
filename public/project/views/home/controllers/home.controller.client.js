@@ -6,6 +6,7 @@
     function HomeController($mdDialog, $location, UserService) {
         var vm = this;
         var user = {};
+
         function init() {
             UserService
                 .findCurrentLoggedInUser()
@@ -18,7 +19,6 @@
 
         init();
 
-        vm.Profile = Profile;
         vm.logout = logout;
         vm.searchPlace = searchPlace;
         vm.getPizza = getPizza;
@@ -27,21 +27,21 @@
         vm.getCoffee = getCoffee;
 
 
-        function searchPlace(place,city) {
-            if(typeof place === 'undefined' || place === "") {
-                place="Best Places";
+        function searchPlace(place, city) {
+            if (typeof place === 'undefined' || place === "") {
+                place = "Best Places";
             }
             if (typeof city === 'undefined' || city === "") {
                 city = "Seattle"
             }
-            if(city) {
+            if (city) {
                 city = city.split(',')[0];
             }
-                if (vm.userId) {
-                    $location.url('/searchResults/' + place + '/location/' + city + "/user/");
-                } else {
-                    $location.url('/searchResults/' + place + '/location/' + city);
-                }
+            if (vm.userId) {
+                $location.url('/searchResults/' + place + '/location/' + city + "/user/");
+            } else {
+                $location.url('/searchResults/' + place + '/location/' + city);
+            }
 
         }
 
@@ -49,7 +49,7 @@
             var place = "Pizza";
             var city;
             if (!city) {
-                    city = "Seattle";
+                city = "Seattle";
             }
 
             if (vm.userId) {
@@ -77,7 +77,7 @@
             var place = "Bar";
             var city;
             if (!city) {
-                    city = "Seattle";
+                city = "Seattle";
             }
 
             if (vm.userId) {
@@ -91,7 +91,7 @@
             var place = "Coffee";
             var city;
             if (!city) {
-                    city = "Seattle";
+                city = "Seattle";
             }
 
             if (vm.userId) {
@@ -101,18 +101,13 @@
             }
         }
 
-
-        function Profile() {
-            $location.url('user/' + vm.userId);
-        }
-
         function logout() {
             UserService.logout()
                 .then(function (response) {
                     $location.url('/');
                     location.reload();
 
-                },function (err) {
+                }, function (err) {
                     $location.url('/');
                     location.reload();
                 });

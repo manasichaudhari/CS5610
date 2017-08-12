@@ -12,9 +12,9 @@
             UserService
                 .login(user)
                 .then(function (user) {
-                    if (user) {
-                        $location.url('/');
-                    }
+                        if (user) {
+                            $location.url('/');
+                        }
                     },
                     function () {
                         $mdDialog.show(
@@ -25,7 +25,7 @@
                                 .ok("OK"));
 
                     }
-            );
+                );
 
         }
     }

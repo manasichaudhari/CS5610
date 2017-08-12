@@ -2,9 +2,11 @@
     angular.module('FoodLover')
         .controller('profileEditController', ProfileEditController);
 
-    function ProfileEditController($location, $routeParams, UserService, $mdDialog,loggedIn) {
+    function ProfileEditController($location, $routeParams, UserService, $mdDialog, loggedIn) {
         var vm = this;
-        if(loggedIn) {vm.userId=loggedIn._id}
+        if (loggedIn) {
+            vm.userId = loggedIn._id
+        }
         vm.logout = logout;
         vm.update = update;
 
@@ -14,6 +16,7 @@
                     vm.user = response.data;
                 });
         }
+
         init();
 
         function logout() {
@@ -24,7 +27,7 @@
         }
 
         function update(newuser) {
-            if(newuser.password === null || newuser.password ==="" || typeof newuser.password === 'undefined') {
+            if (newuser.password === null || newuser.password === "" || typeof newuser.password === 'undefined') {
                 $mdDialog.show(
                     $mdDialog.alert()
                         .clickOutsideToClose(true)
@@ -33,7 +36,7 @@
                         .ok("OK"));
             }
 
-            if(newuser.email !== "" && (typeof newuser.email !== 'undefined' &&  !(newuser.email.includes("@")))) {
+            if (newuser.email !== "" && (typeof newuser.email !== 'undefined' && !(newuser.email.includes("@")))) {
                 $mdDialog.show(
                     $mdDialog.alert()
                         .clickOutsideToClose(true)
