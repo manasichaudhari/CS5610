@@ -93,6 +93,12 @@
                             }
                         })
                 }, function (err) {
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .clickOutsideToClose(true)
+                            .title("Sorry")
+                            .textContent("No results found! Please increase the scope of your search")
+                            .ok("OK"));
 
                 });
 

@@ -70,7 +70,12 @@ module.exports = function (app, model) {
                 }
 
             }, function (err) {
-                console.log(err);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title("Sorry")
+                        .textContent("Something went wrong")
+                        .ok("OK"));
             });
     }
 }

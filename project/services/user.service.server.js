@@ -301,7 +301,7 @@ module.exports = function (app, model) {
                 }
                 res.send(newUser);
             }, function (err) {
-                res.sendStatus(500).send('Could not unfollow user');
+                res.sendStatus(500);
             })
     }
 
@@ -319,7 +319,7 @@ module.exports = function (app, model) {
                 }
                 res.send(newUser);
             }, function (err) {
-                res.sendStatus(500).send('Could not follow user');
+                res.sendStatus(500);
             });
 
     }
@@ -379,7 +379,7 @@ module.exports = function (app, model) {
                         .then(function (user) {
                             res.sendStatus(200);
                         }, function (err) {
-                            res.sendStatus(500).send('Could not delete. DB error.')
+                            res.sendStatus(500).send('Sorry, something went wrong')
                         });
                 });
 
