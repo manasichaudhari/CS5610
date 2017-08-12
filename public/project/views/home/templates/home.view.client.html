@@ -51,26 +51,24 @@
 
     <div layout="column" class="block-style" flex>
         <div layout="column" layout-align="center center" flex>
-
             <md-card class="md-card-style">
                 <div layout="column" layout-align="center center" layout-padding>
                     <span layout="column" layout-align="center center"></span>
                     <p class="text-style"><strong>Explore | Like | Review | Follow </strong></p>
                     <md-card-actions layout="row" class="card-actions">
-                <span class="padding-right" flex>
 
-                <md-input-container class="md-block">
-                    <label class="white-text x-large-text">Search</label>
+                <md-input-container class="md-block ">
+                    <label class="white-text large-text">Looking for</label>
                     <input class="white-text form-control"
                            ng-model="search.place"
                            type="text"
-                           placeholder="Cakes, Tacos, Pizza">
+                           placeholder="Cakes, Tacos">
                     </input>
                 </md-input-container>
                     </span>
 
                         <md-input-container class="md-block">
-                            <label class="white-text x-large-text">City</label>
+                            <label class="white-text large-text">City</label>
                             <input class="white-text form-control"
                                    type="text"
                                    placeholder="Seattle"
@@ -90,9 +88,9 @@
 
                     <div layout="row">
 
-                        <div ng-click="model.getPizza()" class="pizza-pos">
+                        <span ng-click="model.getPizza()" class="pizza-pos">
                             <img ng-src="Images/pizza.svg" width="40px" height="40px">
-                        </div>
+                        </span>
 
                         <span ng-click="model.getCoffee()" class="pizza-pos">
                             <img ng-src="Images/coffee-cup.svg" height="40px" width="40px">
@@ -105,11 +103,9 @@
                         <span ng-click="model.getDrinks()" class="pizza-pos">
                             <img ng-src="Images/lemonade.svg" height="40px" width="40px">
                         </span>
-
                     </div>
                 </div>
             </md-card>
-
         </div>
     </div>
 </div>

@@ -49,7 +49,7 @@
                     <div ng-repeat="user in model.users">
                         <div class="row">
 
-                            <div class="col-xs-5 col-sm-3 col-md-4 col-lg-4">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                             <span ng-if="user.facebook">
                                 <b>{{user.username}} (Facebook)</b>
                             </span>
@@ -60,7 +60,7 @@
                                 <b>{{user.username}}</b>
                             </span>
                             </div>
-                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-3">
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
 
                             <span>
                                  <span ng-if="user.roles === 'ADMIN'"
@@ -78,7 +78,7 @@
                                 </span>
                             </span>
                             </div>
-                            <div class="col-xs-5 col-sm-7 col-md-6 col-lg-5">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 
                             <span>
                                 <span ng-if="user.roles !== 'ADMIN'"

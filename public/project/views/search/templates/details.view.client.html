@@ -123,17 +123,31 @@
 
                 <div>
                     <span class="medium-text">
-                    <span class=" fa fa-globe"
+                    <span class="fa fa-globe"
                           ng-show="model.details.url">
-                    </span> </span>
-                    <a class="small-text" href="{{model.details.url}}">Visit Website<br></a>
+                    </span>
+                    </span>
+
+                    <span class="more-right">
+                    <a class="btn btn-primary small-text more-right"
+                       href="{{model.details.url}}">
+                        Visit Website
+                    </a>
+                        </span>
+
+
+                    <span class="medium-text"
+                          ng-show="model.canOrder == true && model.loggedInUser">
+
+                    <span class="glyphicon glyphicon-shopping-cart"
+                          ng-show="model.details.url">
+                    </span>
 
                     <a class="btn btn-primary"
-                       href="#!/restaurant/{{model.details.id}}/order"
-                       ng-show="model.canOrder == true && model.loggedInUser">
+                       href="#!/restaurant/{{model.details.id}}/order">
                         Order Online
                     </a>
-
+                    </span>
                 </div>
 
 

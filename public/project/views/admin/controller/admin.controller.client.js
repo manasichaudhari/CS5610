@@ -23,7 +23,8 @@
                     vm.reviews = [];
 
                     for (var u in vm.users) {
-                        ReviewService.findAllReviewsByUser(vm.users[u].username)
+                        ReviewService
+                            .findAllReviewsByUser(vm.users[u].username)
                             .then(function (response) {
                                 vm.reviews.push(response.data);
                             });
@@ -82,7 +83,7 @@
                 .then(function (response) {
                     init();
                 }, function (err) {
-
+                    console.log(err);
                 })
         }
 
@@ -112,6 +113,7 @@
                 .then(function (response) {
                     init();
                 }, function (err) {
+                    console.log(err);
 
                 })
         }

@@ -130,7 +130,7 @@
 
                 } else {
                     deferred.reject();
-                    $location.url('/user');
+                    $location.url('/');
                 }
             });
         return deferred.promise;
@@ -145,7 +145,7 @@
 
                 } else {
                     deferred.reject();
-                    $location.url('/user');
+                    $location.url('/');
                 }
             });
         return deferred.promise;

@@ -43,6 +43,9 @@
                 <span>
                     <strong class="large-text">Profile Summary</strong></h2>
                     <h5>
+                        Username: {{model.user.username}}
+                    </h5>
+                    <h5>
                         Name: {{model.user.firstName}} {{model.user.lastName}}
                     </h5>
                     <h5>E-mail: {{model.user.email}} <br>
@@ -50,15 +53,14 @@
                 </span>
         </div>
         <md-card-actions>
-            <a ng-show="model.currentUser.username == model.user.username"
-               class="glyphicon glyphicon-edit large-text padding-right"
-               href="#!/user/edit">
-            </a>
-
-            <a ng-show="model.user.roles != 'ADMIN' && model.currentUser.username == model.user.username"
+            <span ng-show="model.currentUser.username == model.user.username"
+                  ng-click="model.editUser()"
+               class="glyphicon glyphicon-edit large-text left-margin more-right">
+            </span>
+            <span ng-show="model.user.roles != 'ADMIN' && model.currentUser.username == model.user.username"
                class="glyphicon glyphicon-trash large-text"
                ng-click="model.deleteUser()">
-            </a>
+            </span>
 
             <a class="btn btn-primary btn-sm margin-left" style="margin-bottom: 8px"
                ng-show="model.user.roles == 'MANAGER' && model.currentUser.username == model.user.username"
@@ -79,7 +81,12 @@
         <md-card-content layout="column">
             <div flex layout="column">
                 <md-list>
-                    <strong>Your Favourite places</strong>
+                    <strong>Your Favorite places</strong>
+                    <ul ng-show="model.user.favourites.length === 0">
+                        <li>
+                            <i>You haven't liked any place yet</i>
+                        </li>
+                    </ul>
                     <ul>
                         <li ng-repeat="favorite in model.user.favourites">
                             <a href="#!/details/{{favorite.id}}/user/">
@@ -99,18 +106,19 @@
             <!--Reviews-->
             <div>
                 <strong>Your Reviews</strong><br>
+                <ul ng-show="model.reviews.length === 0">
+                    <li>
+                        <i>You haven't reviewed any place yet</i>
+                    </li>
+                </ul>
                 <ul>
                     <div layout="column" ng-repeat="review in model.reviews">
-                        <li
-                                @{{review.restaurantName}}>
+                        <li>
+                                ({{review.restaurantName}})
                             "{{review.review}}"
                             <span ng-show="model.currentUser.username == model.user.username"
                                   ng-click="model.deleteReview(review)"
                                   class="glyphicon glyphicon-trash">
-
-                                <!--<md-icon md-svg-icon="Images/round-delete-button.svg"></md-icon>-->
-
-                                <!--<i class="fa fa-times" aria-hidden="true"></i>-->
                             </span>
                             <br>
                     </div>
@@ -131,6 +139,12 @@
                     People whom you follow
                 </strong>
 
+                <ul ng-show="model.userFollows.length === 0">
+                    <li>
+                        <i>You haven't followed anyone yet</i>
+                    </li>
+                </ul>
+
                 <ul>
                     <li ng-repeat="userFollow in model.userFollows">
                         {{userFollow.username}}
@@ -149,6 +163,12 @@
             <div flex layout="column">
                 <ul>
                     <strong>People who follow you</strong>
+                    <ul ng-show="model.userFollowedBy.length === 0">
+                        <li>
+                            <i>None yet</i>
+                        </li>
+                    </ul>
+
                     <li ng-repeat="userFollowedBy in model.userFollowedBy">
                         {{userFollowedBy.username}}
                         <span ng-show="model.noFollowedBy"> {{model.noFollowedBy}} None</span>
@@ -163,6 +183,12 @@
     <md-card class="md-style"
              layout-padding ng-show="model.currentUser.username == model.user.username">
         <strong>Your Orders</strong>
+
+        <ul ng-show="model.orders.length === 0" class="left-padding">
+            <li>
+                <i>You haven't placed any order yet</i>
+            </li>
+        </ul>
         <ul>
             <li ng-repeat="order in model.orders"
                 class="margin-left">

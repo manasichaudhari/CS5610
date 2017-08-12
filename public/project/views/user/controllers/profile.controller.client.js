@@ -16,6 +16,7 @@
         vm.unFollowUser = unFollowUser;
         vm.logout = logout;
         vm.deleteReview = deleteReview;
+        vm.editUser=editUser;
 
         function init() {
 
@@ -76,6 +77,9 @@
 
         init();
 
+        function editUser() {
+            $location.url('/user/edit');
+        }
         function deleteReview(review) {
             ReviewService.deleteReview(review)
                 .then(function (response) {
