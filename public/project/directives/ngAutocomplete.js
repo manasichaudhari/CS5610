@@ -77,17 +77,20 @@
                     newAutocomplete()
 
 
-                    $timeout(function () {
-                        // Find google places div
-                        _.findIndex(angular.element(document.querySelectorAll('.pac-container')), function (container) {
-                            // disable ionic data tab
-                            container.setAttribute('data-tap-disabled', 'true');
-                            // leave input field if google-address-entry is selected
-                            container.onclick = function () {
-                                document.getElementById('autocomplete').blur();
-                            };
-                        });
-                    }, 500);
+                    var phoneres =  function () {
+                        $timeout(function () {
+                            // Find google places div
+                            _.findIndex(angular.element(document.querySelectorAll('.pac-container')), function (container) {
+                                // disable ionic data tab
+                                container.setAttribute('data-tap-disabled', 'true');
+                                // leave input field if google-address-entry is selected
+                                container.onclick = function () {
+                                    document.getElementById('autocomplete').blur();
+                                };
+                            });
+                        }, 500);
+                    }
+                    phoneres()
 
 
                     //watch options provided to directive
