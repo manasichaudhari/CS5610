@@ -205,12 +205,12 @@
         }
 
 
-        function addReviews(name, review) {
+        function addReviews(name, review,text) {
 
             vm.review = "";
             if (vm.userId) {
 
-                if (review) {
+                if (text !== "" && typeof text !== 'undefined') {
                     ReviewService
                         .addReview(user.username, name, review)
                         .then(function (response) {
@@ -224,9 +224,8 @@
                             .textContent("Can't post an empty review.")
                             .ok("OK"));
                 }
-
             } else {
-                if (review) {
+                if (text !== "" && typeof text !== 'undefined') {
                     var newUser = {'username': "Anonymous"};
                     ReviewService.addReview(newUser.username, name, review)
                         .then(function (response) {
@@ -239,10 +238,9 @@
                             .title("Review error!")
                             .textContent("Can't post an empty review.")
                             .ok("OK"));
+
                 }
-
             }
-
             init();
         }
     }

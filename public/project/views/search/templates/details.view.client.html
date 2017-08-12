@@ -155,14 +155,13 @@
                 </span>
                 <span ng-show="!model.userId">@{{review.username}}</span>
                 <span class="brown-colour">
-                    <i>--> {{review.review}}</i>
+                    "{{review.review}}"
 
 
                 <span ng-show="model.loggedInUser.username == review.username"
                       ng-click="model.deleteReview(review)"
                       class="pull-right-follow padding-right">
                     <span class="glyphicon glyphicon-trash black-text"></span>
-                    <!--<md-icon md-svg-icon="Images/round-delete-button.svg"></md-icon>-->
 
                     <md-divider></md-divider>
 
@@ -188,7 +187,7 @@
                 <label>Write your own review</label>
                 <textarea ng-model="model.review.text"></textarea>
             </md-input-container>
-            <button ng-click="model.addReviews(model.details.name, model.review)"
+            <button ng-click="model.addReviews(model.details.name, model.review, model.review.text)"
                     class="btn btn-primary">
                 Post Review
             </button>
