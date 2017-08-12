@@ -2,6 +2,28 @@
 
     angular.module('FoodLover')
         .directive('ngAutocomplete', function ($parse) {
+            // return {
+            //     link: function () {
+            //         $timeout(function () {
+            //             // Find google places div
+            //             _.findIndex(angular.element(document.querySelectorAll('.pac-container')), function (container) {
+            //                 // disable ionic data tab
+            //                 container.setAttribute('data-tap-disabled', 'true');
+            //                 // leave input field if google-address-entry is selected
+            //                 container.onclick = function () {
+            //                     document.getElementById('autocomplete').blur();
+            //                 };
+            //             });
+            //         }, 500);
+            //     }
+            // }
+
+
+
+
+
+
+
             return {
 
                 scope: {
@@ -17,6 +39,7 @@
 
                     //convert options provided to opts
                     var initOpts = function () {
+
                         opts = {}
                         if (scope.options) {
                             if (scope.options.types) {
@@ -35,6 +58,7 @@
                     }
                     initOpts()
 
+
                     //create new autocomplete
                     //reinitializes on every change of the options provided
                     var newAutocomplete = function () {
@@ -42,12 +66,6 @@
                         google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
 
 
-
-                            $('body').on('touchend','.pac-container', function(e){e.stopImmediatePropagation();})
-
-                            $('.pac-container').on('touchend', function(e){
-                                e.stopPropagation();
-                            });
 
 
                             scope.$apply(function () {
@@ -57,6 +75,20 @@
                         })
                     }
                     newAutocomplete()
+
+
+                    $timeout(function () {
+                        // Find google places div
+                        _.findIndex(angular.element(document.querySelectorAll('.pac-container')), function (container) {
+                            // disable ionic data tab
+                            container.setAttribute('data-tap-disabled', 'true');
+                            // leave input field if google-address-entry is selected
+                            container.onclick = function () {
+                                document.getElementById('autocomplete').blur();
+                            };
+                        });
+                    }, 500);
+
 
                     //watch options provided to directive
                     scope.watchOptions = function () {
