@@ -309,3 +309,8 @@ md-card {
     bottom: 20px;
     position: relative;
 }
+
+.pac-container {
+z-index: 10000 !important;
+    display: block !important;
+}
