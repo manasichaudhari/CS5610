@@ -40,6 +40,17 @@
                     var newAutocomplete = function () {
                         scope.gPlace = new google.maps.places.Autocomplete(element[0], opts);
                         google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
+
+
+
+                            // $$('body').on('touchend','.pac-container', function(e){e.stopImmediatePropagation();})
+
+                            $$('.pac-container').on('touchend', function(e) {
+                                console.log('touchend');
+                                e.stopPropagation();
+                            });
+
+
                             scope.$apply(function () {
                                 scope.details = scope.gPlace.getPlace();
                                 scope.ngAutocomplete = element.val();
