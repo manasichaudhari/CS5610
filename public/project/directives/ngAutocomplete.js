@@ -43,7 +43,7 @@
 
 
 
-                            // $('body').on('touchend','.pac-container', function(e){e.stopImmediatePropagation();})
+                            $('body').on('touchend','.pac-container', function(e){e.stopImmediatePropagation();})
 
                             $('.pac-container').on('touchend', function(e){
                                 e.stopPropagation();
