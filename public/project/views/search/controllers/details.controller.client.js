@@ -2,11 +2,14 @@
     angular.module('FoodLover')
         .controller('DetailsController', DetailsController);
 
-    function DetailsController($mdDialog, FoursquareSearchService, ReviewService, UserService, $location, $routeParams) {
+    function DetailsController($mdDialog, FoursquareSearchService, ReviewService, UserService, $location, $routeParams, loggedIn) {
         var vm = this;
 
         vm.id = $routeParams['id'];
-        vm.userId = $routeParams['uid'];
+        if(loggedIn) {
+            vm.userId = loggedIn._id;
+        }
+
 
 
 

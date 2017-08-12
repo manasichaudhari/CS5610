@@ -2,10 +2,9 @@
     angular.module('FoodLover')
         .controller('profileEditController', ProfileEditController);
 
-    function ProfileEditController($location, $routeParams, UserService, $mdDialog) {
+    function ProfileEditController($location, $routeParams, UserService, $mdDialog,loggedIn) {
         var vm = this;
-
-        vm.userId = $routeParams['uid'];
+        if(loggedIn) {vm.userId=loggedIn._id}
         vm.logout = logout;
         vm.update = update;
 
@@ -46,7 +45,7 @@
                 UserService.updateUser(vm.userId, newuser)
                     .then(function (response) {
                         newuser = response.data;
-                        $location.url('user/' + vm.userId);
+                        $location.url('user/');
                     }, function (err) {
                         $mdDialog.show(
                             $mdDialog.alert()

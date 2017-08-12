@@ -33,9 +33,12 @@
             .when('/details/:id', {
                 templateUrl: 'views/search/templates/details.view.client.html',
                 controller: 'DetailsController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
-            .when('/details/:id/user/:uid', {
+            .when('/details/:id/user/', {
                 templateUrl: 'views/search/templates/details.view.client.html',
                 controller: 'DetailsController',
                 controllerAs: 'model',
@@ -74,15 +77,15 @@
                     loggedIn: checkLoggedIn
                 }
             })
-            .when('/user/:uid', {
-                templateUrl: 'views/user/templates/profile.view.client.html',
-                controller: 'profileController',
-                controllerAs: 'model',
-                resolve: {
-                    loggedIn: checkLoggedIn
-                }
-            })
-            .when('/user/:uid/edit', {
+            // .when('/user/:uid', {
+            //     templateUrl: 'views/user/templates/profile.view.client.html',
+            //     controller: 'profileController',
+            //     controllerAs: 'model',
+            //     resolve: {
+            //         loggedIn: checkLoggedIn
+            //     }
+            // })
+            .when('/user/edit', {
                 templateUrl: 'views/user/templates/profile-edit.view.client.html',
                 controller: 'profileEditController',
                 controllerAs: 'model',
@@ -125,9 +128,6 @@
         return deferred.promise;
     }
 
-    function noCheckLoggedIn() {
-
-    }
 
     function checkAdmin(UserService, $q, $location) {
         var deferred = $q.defer();

@@ -47,7 +47,7 @@
 
         function getRestaurantDetails(id) {
             if (vm.userId) {
-                $location.url('/details/' + id + "/user/" + vm.userId);
+                $location.url('/details/' + id + "/user/");
             } else {
                 $location.url('/details/' + id);
             }
