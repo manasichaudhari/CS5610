@@ -7,7 +7,8 @@
         var api = {
             'findRestaurantsByPlaceAndCity': findRestaurantsByPlaceAndCity,
             'findRestaurantById': findRestaurantById,
-            'findMenuForRestaurant': findMenuForRestaurant
+            'findMenuForRestaurant': findMenuForRestaurant,
+            'findImageforRestaurant': findImageforRestaurant
         };
 
         return api;
@@ -27,7 +28,6 @@
         }
 
         function findRestaurantsByPlaceAndCity(place, city) {
-
             var url = "https://api.foursquare.com/v2/venues/explore?TERM&venuePhotos=1&client_id=NBDNWZNOYVVAMT3SLBA5SWQYHP21SQQ3LYB22OHK2ATAC5TT" +
                 "&client_secret=ZW31TL3XJ1VGYXPJI2QTK2MN1I0LJZ1NXWDZI0NSRFAZ2XVM&v=20170812";
             var finalUrl = url.replace('TERM', "near=" + city + "&query=" + place);
@@ -35,7 +35,7 @@
         }
 
 
-        function findImage(id) {
+        function findImageforRestaurant(id) {
             var url = "https://api.foursquare.com/v2/venues/" + id + "/photos?&client_id=NBDNWZNOYVVAMT3SLBA5SWQYHP21SQQ3LYB22OHK2ATAC5TT" +
                 "&client_secret=ZW31TL3XJ1VGYXPJI2QTK2MN1I0LJZ1NXWDZI0NSRFAZ2XVM&v=20170812";
             return $http.get(url);

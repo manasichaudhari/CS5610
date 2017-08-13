@@ -50,6 +50,8 @@
         <md-card class="md-style" layout-padding layout="row" layout-fill>
             <div layout="column" layout-padding>
                 <div layout="row" layout-padding>
+
+
                     <h3><strong>{{model.details.name}}</strong></h3>
                     <span class="favorite-align">
                         <md-button ng-show="model.favorite == false"
@@ -78,7 +80,7 @@
                     <i class="fa fa-building" aria-hidden="true"></i>
                     </span>
                     <span class="brown-colour padding-right">
-&nbsp;                       {{model.details.location.address}},
+                      {{model.details.location.address}},
                         {{model.details.location.city}}
                         {{model.details.location.state}}
                     </span>
@@ -93,7 +95,7 @@
                     </span>
                     <span flex class="brown-colour"
                           ng-show="!model.details.stats.checkinsCount">
-                         Not available
+                         Not available<br>
                     </span>
 
                 <span ng-show="model.details.contact.formattedPhone">
@@ -131,10 +133,16 @@
                     <span class="more-right">
                     <a class="btn btn-primary small-text more-right"
                        href="{{model.details.url}}">
-                        Visit Website
+                        Visit Website<br>
                     </a>
-                        </span>
+                    </span>
+                    <br>
+                    <br>
 
+
+                    <img class="img-responsive" style="border:1px solid #021a40"
+                         ng-show="{{model.data.response.photos.count}} > 0"
+                         ng-src="{{model.photo.prefix}}1000x400{{model.photo.suffix}}">
 
                     <span class="medium-text"
                           ng-show="model.canOrder == true && model.loggedInUser">

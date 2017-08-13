@@ -21,7 +21,6 @@
         vm.deleteReview = deleteReview;
 
         function init() {
-
             if (vm.userId) {
                 UserService.findUserById(vm.userId)
                     .then(function (response) {
@@ -43,6 +42,26 @@
                         }
                     });
             }
+
+            FoursquareSearchService
+                .findImageforRestaurant(vm.id)
+                .then(function (response) {
+                    console.log(response.data);
+                    vm.results=response;
+                    console.log(response.data.response.photos.count);
+                        if (response.data.response.photos.count > 1) {
+                            var photos =  response.data.response.photos.items;
+
+                            console.log(response.data.response.photos.items);
+                            vm.photo = photos[0];
+                            // console.log(photo);
+                            // console.log(photo.prefix+ "1000x1000"+ photo.sufffix);
+                            // vm.results = response.data.response.photos[0].items[0].prefix + "1000x1000" +response.data.response.photos[0].items[0].suffix;
+                        }
+                    }
+                );
+
+
 
             FoursquareSearchService
                 .findMenuForRestaurant(vm.id)
