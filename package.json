@@ -4,7 +4,6 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
-    "angular-route": "^1.6.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
@@ -18,8 +17,7 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
-    "q": "^1.5.0",
-    "textangular": "^1.5.16"
+    "q": "^1.5.0"
   },
   "devDependencies": {},
   "scripts": {
