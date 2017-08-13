@@ -132,7 +132,8 @@ md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-
 }
 
 .header-img {
-    width: 19%;
+    width: 55%;
+    height: 55%;
 }
 
 .brown-colour {
