@@ -62,21 +62,24 @@
                     <input class="white-text form-control"
                            ng-model="search.place"
                            type="text"
-                           placeholder="Cakes, Tacos">
+                           size="25"
+                           placeholder="Cakes, Tacos, Pizza">
                     </input>
                 </md-input-container>
-                    </span>
+
 
                         <md-input-container class="md-block">
+
                             <label class="white-text large-text">City</label>
                             <input class="white-text form-control"
                                    type="text"
+                                   size="15"
                                    placeholder="Seattle"
                                    ng-init="search.city='Seattle'"
                                    ng-model="search.city"
                                    ng-autocomplete>
                         </md-input-container>
-                        </span>
+
                         <md-button ng-click="model.searchPlace(search.place,search.city)"
                                    class="md-icon-button md-primary "
                                    aria-label="search">

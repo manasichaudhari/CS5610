@@ -140,6 +140,10 @@ md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-
     color: brown;
 }
 
+.text {
+    width: 90px;
+    height: 200px;
+}
 .icon-size {
     font-size: xx-large;
 }

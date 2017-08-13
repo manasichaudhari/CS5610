@@ -54,6 +54,9 @@
                             <input ng-model="newuser.email"
                                    id="email"
                                    type="email"/>
+
+                            <div ng-messages="newuser.email.$error">
+                                <div ng-message="required">Please enter valid E-mail</div></div>
                         </md-input-container>
                         <md-input-container flex class="md-block">
                             <md-icon md-svg-icon="Images/lock_closed.svg"></md-icon>
@@ -66,8 +69,8 @@
                             <md-icon md-svg-icon="Images/lock_closed.svg"></md-icon>
                             <label class="large-text">Verify Password</label>
                             <input ng-model="newuser.verifyPassword" type="password" required/>
-                        </md-input-container>
 
+                        </md-input-container>
 
                         <md-card-actions>
                             <section layout="row" layout-align="center center" class="card-actions">
