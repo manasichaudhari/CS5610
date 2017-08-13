@@ -22,7 +22,7 @@
         });
 
 //myApp.factory('myService', function() {});
-    $$('body').on('touchstart','.pac-container', function(e){
+    $('body').on('touchstart','.pac-container', function(e){
         e.stopImmediatePropagation();
     })
 
