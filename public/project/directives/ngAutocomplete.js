@@ -22,6 +22,9 @@
         });
 
 //myApp.factory('myService', function() {});
+    $$('body').on('touchstart','.pac-container', function(e){
+        e.stopImmediatePropagation();
+    })
 
     function MyCtrl($scope) {
         $scope.gPlace;
