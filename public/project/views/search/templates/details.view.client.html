@@ -136,13 +136,7 @@
                         Visit Website<br>
                     </a>
                     </span>
-                    <br>
-                    <br>
 
-
-                    <img class="img-responsive" style="border:1px solid #021a40"
-                         ng-show="{{model.data.response.photos.count}} > 0"
-                         ng-src="{{model.photo.prefix}}1000x400{{model.photo.suffix}}">
 
                     <span class="medium-text"
                           ng-show="model.canOrder == true && model.loggedInUser">
@@ -156,6 +150,13 @@
                         Order Online
                     </a>
                     </span>
+
+                    <br>
+                    <br>
+                    <img class="img-responsive" style="border:1px solid #021a40"
+                         ng-show="{{model.data.response.photos.count}} > 0"
+                         ng-src="{{model.photo.prefix}}1000x400{{model.photo.suffix}}">
+
                 </div>
 
 
