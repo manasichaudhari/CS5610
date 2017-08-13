@@ -215,9 +215,9 @@ md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-
 }
 
 .pull-right {
-    position: absolute;
+    position: relative;
     left: auto;
-    right: 20px;
+    /*right: 20px;*/
     background-color: rgba(21, 144, 49, 0.82);
     color: white;
 }

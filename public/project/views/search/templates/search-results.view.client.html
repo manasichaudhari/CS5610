@@ -56,14 +56,15 @@
     <md-card class="md-style"
              layout-padding ng-repeat="place in model.results">
         <div layout="row" layout-padding>
-            <img ng-src="{{place.venue.categories[0].icon.prefix}}bg_88{{place.venue.categories[0].icon.suffix}}"
-                 height="40px" width="40px">
+
+            <div class="col-xs-10">
             <div layout="column">
                 <span class="md-primary blue-text large-text"
                       ng-click="model.getRestaurantDetails(place.venue.id)">
                     <b>
                     {{place.venue.name}}
-                    </b>
+                    </b><img ng-src="{{place.venue.categories[0].icon.prefix}}bg_88{{place.venue.categories[0].icon.suffix}}"
+                             height="30px" width="30px">
                 </span>
 
                 <span class="pull-right btn-circle">
@@ -79,13 +80,21 @@
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 {{place.venue.contact.formattedPhone}}
                 </span>
-                <span class="pull-right-follow more-top-margin">
+                <span >
                     <span class="glyphicon glyphicon-map-marker"></span>
                     <a href="https://www.google.com/maps/place/{{place.venue.name}}/@{{place.venue.location.lat}},{{place.venue.location.lng}},18z">
                         Locate on Map
                     </a>
                 </span>
             </div>
+        </div>
+
+            <div class="col-xs-2 visible-xs visible-sm visible-md visible-lg">
+            <img class="pull-right-follow img-responsive"
+                        ng-show="{{place.venue.photos.count}} > 0"
+                     ng-src="{{place.venue.photos.groups[0].items[0].prefix}}1000x1000{{place.venue.photos.groups[0].items[0].suffix}}">
+            </div>
+
         </div>
     </md-card>
 

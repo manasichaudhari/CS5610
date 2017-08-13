@@ -30,6 +30,8 @@
                 .then(function (response) {
                     console.log(response.data);
                     vm.results = response.data.response.groups[0].items;
+                    // var url= results[0].place.venue.photos.groups[0].items[0].prefix/50x50/place.venue.photos.groups[0].items[0].suffix;">
+
                     if (typeof vm.results === 'undefined' || vm.results.length === 0) {
                         $mdDialog.show(
                             $mdDialog.alert()
