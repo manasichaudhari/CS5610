@@ -139,7 +139,21 @@ md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-
 .brown-colour {
     color: brown;
 }
+.navbar {
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
+    background:rgba(0,0,0,0.5);   /* for latest browsers */
 
+}
+.navbar-default {
+    background-color: rgba(0, 0, 0, 0.29) !important;
+    border-color:transparent !important;
+    background-image:none;
+    box-shadow:none;
+}
+
+.navbar li { color: #000 }
 .text {
     width: 90px;
     height: 200px;
@@ -156,6 +170,7 @@ md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-
 .white-text {
     color: #ffffff;
 }
+
 
 .medium-text {
     font-size: 18px;
