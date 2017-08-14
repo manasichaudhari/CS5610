@@ -76,6 +76,7 @@
                     No Description Found.
                 </span>
                 <span>
+                    <span ng-show="model.details.location.address">
                     <span class="medium-text">
                     <i class="fa fa-building" aria-hidden="true"></i>
                     </span>
@@ -84,6 +85,7 @@
                         {{model.details.location.city}}
                         {{model.details.location.state}}
                     </span>
+                        </span>
 
                     <md-icon md-svg-icon="Images/users-group.svg"></md-icon>
                     <span class="brown-colour">
@@ -101,8 +103,6 @@
                 <span ng-show="model.details.contact.formattedPhone">
                     <span class="medium-text moveDown">
                     <i class="fa fa-phone" aria-hidden="true">
-
-
                     </i>
                     </span>
                     <span class="brown-colour padding-right">
@@ -111,6 +111,7 @@
                 </span>
                     <span class="medium-text">
                     <span class="fa fa-clock-o"
+                          ng-show="model.details.hours.timeframes"
                           aria-hidden="true">
                     </span>
                     </span>
@@ -200,7 +201,7 @@
                       ng-show="model.userId && review.username != 'Anonymous' && review.username != model.username && model.alreadyFollows.indexOf(review.username) >= 0"
                       ng-click="model.unFollowUser(review.username)">
 
-                    <button class=" btn btn-primary">Following</button>
+                    <button class=" btn btn-primary">Unfollow</button>
                 </span>
 
             </div>

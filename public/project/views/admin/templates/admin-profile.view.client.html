@@ -136,6 +136,8 @@
         <!--Reviews tab-->
         <md-tab label="User Reviews">
             <md-card class="md-style">
+                <h5 class="left-padding" ng-show="model.reviews.length == 0"><i>Looks like no one has left a review yet</i></h5>
+
                 <md-content layout-padding class="texture-image">
                     <div ng-show="review.length !== 0"
                          ng-repeat="review in model.reviews">
@@ -151,6 +153,7 @@
                     <span ng-show="model.anonReviews.length != 0">
                         <h3>Anonymous Reviews:</h3>
                     </span>
+                    <h5 class="left-padding" ng-show="model.anonReviews.length == 0"><i>Looks like no one has reviewed anonymously yet</i></h5>
                     <div ng-repeat="r in model.anonReviews">
                         ({{r.restaurantName}}): "{{r.review}}"
                         <span class="md-icon-button glyphicon glyphicon-trash"
@@ -165,6 +168,7 @@
         <md-tab label="Orders placed">
             <md-card class="md-style">
                 <md-content layout-padding class="texture-image ">
+                    <h5 class="left-padding" ng-show="model.orders.length == 0"><i>Looks like there is no order yet</i></h5>
                     <div ng-repeat="order in model.orders">
                         Order placed by '{{order.name}}' from '{{order.restName}}':
                         <a href="#!/restaurant/{{order.restId}}/bill/{{order._id}}">{{order._id}}</a>

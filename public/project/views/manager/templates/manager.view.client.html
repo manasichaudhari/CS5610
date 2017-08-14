@@ -35,7 +35,8 @@
             </div>
         </md-toolbar>
     </header>
-
+    <h2 class="left-padding">All orders</h2>
+    <h5 class="left-padding" ng-show="model.orders.length == 0"><i>Looks like there is no order yet</i></h5>
     <md-card class="md-style">
         <md-content layout-padding class="texture-image">
             <div ng-repeat="order in model.orders">
